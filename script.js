@@ -3,7 +3,7 @@
 ========================================================== */
 
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxJszkml8aQhelWm3dIVRKAQgpP4s0-7zpAeRhJOrrXJTz5_-bvA658qXLe-FV6iyxvlA/exec"
+"https://script.google.com/macros/s/AKfycbxECp-ildBstHP64_FwTlfT4QJbA4W7I3A9pAToNv2AgB_83kpzt2lb4Zjzrb7988uHBA/exec"
 
 /* ==========================================================
    DATA DO CASAMENTO
