@@ -605,7 +605,13 @@ async function confirmarPresenca() {
 
     );
 
-    const retorno = await resposta.json();
+   console.log("Status HTTP:", resposta.status);
+
+const texto = await resposta.text();
+
+console.log("Resposta do servidor:", texto);
+
+const retorno = JSON.parse(texto);
 
     fecharLoading();
 
