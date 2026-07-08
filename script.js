@@ -605,7 +605,13 @@ async function confirmarPresenca() {
 
     );
 
-    const retorno = await resposta.json();
+    const texto = await resposta.text();
+
+console.log("Resposta do servidor:");
+
+console.log(texto);
+
+const retorno = JSON.parse(texto);
 
     fecharLoading();
 
@@ -635,19 +641,24 @@ async function confirmarPresenca() {
 
   catch (erro) {
 
-    console.error(erro);
-
     fecharLoading();
 
     btnConfirmar.disabled = false;
 
-    mostrarMensagem(
+    console.error("ERRO COMPLETO:", erro);
 
-      "Erro ao confirmar presença."
-
+    alert(
+        erro.message +
+        "\n\n" +
+        erro.stack
     );
 
-  }
+    mostrarMensagem(
+        erro.message,
+        "erro"
+    );
+
+}
 
 }
 
