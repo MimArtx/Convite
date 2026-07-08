@@ -1,7 +1,7 @@
 /* ==========================================================
    RSVP CASAMENTO
    Lucas & Yasmim
-   Versão 2.0
+   script.js
 ========================================================== */
 
 /* ==========================================================
@@ -9,7 +9,7 @@
 ========================================================== */
 
 const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwifHgAo9Tf17Sdjy3DmXNFDHxeQ2wm_XcBt4F1satFnmfpf84zyV3k-AG26G7PXMXtsw/exec";
+  "COLE_AQUI_A_URL_DO_SEU_APPS_SCRIPT";
 
 /* ==========================================================
    DATA DO CASAMENTO
@@ -17,112 +17,97 @@ const SCRIPT_URL =
 ========================================================== */
 
 const DATA_CASAMENTO = new Date(
-  2026,
-  10,
-  7,
-  16,
-  30,
-  0
+    2026,
+    10,
+    7,
+    16,
+    30,
+    0
 );
-
-/* ==========================================================
-   ESTADO DA APLICAÇÃO
-========================================================== */
-
-const app = {
-
-  convite: "",
-
-  pessoas: [],
-
-  confirmados: []
-
-};
 
 /* ==========================================================
    ELEMENTOS
 ========================================================== */
 
-// Tela inicial
 const cover = document.getElementById("cover");
 const site = document.getElementById("site");
 const btnAbrir = document.getElementById("btnAbrir");
 
-// Contador
 const dias = document.getElementById("dias");
 const horas = document.getElementById("horas");
 const minutos = document.getElementById("minutos");
 const segundos = document.getElementById("segundos");
 
-// RSVP
+const btnTopo = document.getElementById("btnTopo");
+
+const btnMusica = document.getElementById("btnMusica");
+const musica = document.getElementById("musica");
+
+const copiarPix = document.getElementById("copiarPix");
+const pix = document.getElementById("pix");
+const pixMensagem = document.getElementById("pixMensagem");
+
+const loading = document.getElementById("loading");
+
+const modal = document.getElementById("modalSucesso");
+const fecharModal = document.getElementById("fecharModal");
+
+/* ==========================================================
+   RSVP
+========================================================== */
+
 const representante =
-document.getElementById("representante");
+    document.getElementById("representante");
 
 const btnBuscar =
-document.getElementById("btnBuscar");
+    document.getElementById("btnBuscar");
 
 const resultado =
-document.getElementById("resultado");
+    document.getElementById("resultado");
 
 const nomeConvite =
-document.getElementById("nomeConvite");
+    document.getElementById("nomeConvite");
 
 const descricaoConvite =
-document.getElementById("descricaoConvite");
+    document.getElementById("descricaoConvite");
 
 const tipoConvite =
-document.getElementById("tipoConvite");
+    document.getElementById("tipoConvite");
 
 const listaConvidados =
-document.getElementById("listaConvidados");
+    document.getElementById("listaConvidados");
 
 const totalSelecionados =
-document.getElementById("totalSelecionados");
+    document.getElementById("totalSelecionados");
 
 const mensagem =
-document.getElementById("mensagem");
+    document.getElementById("mensagem");
 
 const btnConfirmar =
-document.getElementById("btnConfirmar");
+    document.getElementById("btnConfirmar");
 
-// Loading
-const loading =
-document.getElementById("loading");
+/* ==========================================================
+   VARIÁVEIS
+========================================================== */
 
-// Modal
-const modal =
-document.getElementById("modalSucesso");
-
-const fecharModal =
-document.getElementById("fecharModal");
-
-// PIX
-const pix =
-document.getElementById("pix");
-
-const copiarPix =
-document.getElementById("copiarPix");
-
-const pixMensagem =
-document.getElementById("pixMensagem");
+let conviteAtual = "";
+let pessoas = [];
+let confirmados = [];
+let musicaLigada = false;
 
 /* ==========================================================
    INICIALIZAÇÃO
 ========================================================== */
 
-document.addEventListener(
+window.addEventListener("load", iniciarSistema);
 
-  "DOMContentLoaded",
+function iniciarSistema() {
 
-  iniciarSistema
+    iniciarContador();
 
-);
+    configurarEventos();
 
-function iniciarSistema(){
-
-  iniciarEventos();
-
-  iniciarContador();
+    restaurarRepresentante();
 
 }
 
@@ -130,85 +115,83 @@ function iniciarSistema(){
    EVENTOS
 ========================================================== */
 
-function iniciarEventos(){
+function configurarEventos() {
 
-  btnAbrir.addEventListener(
+    btnAbrir?.addEventListener(
+        "click",
+        abrirConvite
+    );
 
-    "click",
+    copiarPix?.addEventListener(
+        "click",
+        copiarChavePix
+    );
 
-    abrirConvite
+    btnBuscar?.addEventListener(
+        "click",
+        buscarConvite
+    );
 
-  );
+    btnConfirmar?.addEventListener(
+        "click",
+        confirmarPresenca
+    );
 
-  btnBuscar.addEventListener(
+    fecharModal?.addEventListener(
+        "click",
+        fecharModalSucesso
+    );
 
-    "click",
+    btnTopo?.addEventListener(
+        "click",
+        voltarAoTopo
+    );
 
-    buscarConvite
+    btnMusica?.addEventListener(
+        "click",
+        alternarMusica
+    );
 
-  );
+    representante?.addEventListener(
+        "keydown",
+        function(e){
 
-  btnConfirmar.addEventListener(
+            if(e.key==="Enter"){
 
-    "click",
+                e.preventDefault();
 
-    confirmarPresenca
+                buscarConvite();
 
-  );
+            }
 
-  representante.addEventListener(
+        }
 
-    "keydown",
+    );
 
-    function(e){
-
-      if(e.key==="Enter"){
-
-        e.preventDefault();
-
-        buscarConvite();
-
-      }
-
-    }
-
-  );
-
-  copiarPix.addEventListener(
-
-    "click",
-
-    copiarChavePix
-
-  );
-
-  fecharModal.addEventListener(
-
-    "click",
-
-    fecharModalSucesso
-
-  );
+    window.addEventListener(
+        "scroll",
+        controlarBotaoTopo
+    );
 
 }
 
 /* ==========================================================
-   ABRIR CONVITE
+   COVER
 ========================================================== */
 
 function abrirConvite(){
 
-  cover.style.opacity = "0";
+    cover.style.opacity = "0";
 
-  setTimeout(()=>{
+    setTimeout(()=>{
 
-    cover.style.display="none";
+        cover.style.display="none";
 
-    site.style.display="block";
+        site.style.display="block";
 
-    site.style.animation="fadeUp .8s";
+        site.classList.add("fade");
 
-  },800);
+    },700);
 
 }
 
@@ -218,117 +201,101 @@ function abrirConvite(){
 
 function iniciarContador(){
 
-  atualizarContador();
+    atualizarContador();
 
-  setInterval(
+    setInterval(
 
-    atualizarContador,
+        atualizarContador,
 
-    1000
+        1000
 
-  );
+    );
 
 }
 
 function atualizarContador(){
 
-  const agora = new Date();
+    const agora = new Date();
 
-  const distancia =
-  DATA_CASAMENTO - agora;
+    const distancia =
+        DATA_CASAMENTO - agora;
 
-  if(distancia<=0){
+    if(distancia <= 0){
 
-    dias.textContent="0";
-    horas.textContent="00";
-    minutos.textContent="00";
-    segundos.textContent="00";
+        dias.textContent="0";
+        horas.textContent="00";
+        minutos.textContent="00";
+        segundos.textContent="00";
 
-    return;
+        return;
 
-  }
+    }
 
-  const d =
-  Math.floor(
-    distancia /
-    (1000*60*60*24)
-  );
+    dias.textContent = Math.floor(
 
-  const h =
-  Math.floor(
-    (distancia %
-    (1000*60*60*24))
-    /
-    (1000*60*60)
-  );
+        distancia /
 
-  const m =
-  Math.floor(
-    (distancia %
-    (1000*60*60))
-    /
-    (1000*60)
-  );
+        (1000*60*60*24)
 
-  const s =
-  Math.floor(
-    (distancia %
-    (1000*60))
-    /
-    1000
-  );
+    );
 
-  dias.textContent = d;
+    horas.textContent = String(
 
-  horas.textContent =
-  String(h).padStart(2,"0");
+        Math.floor(
 
-  minutos.textContent =
-  String(m).padStart(2,"0");
+            (distancia %
 
-  segundos.textContent =
-  String(s).padStart(2,"0");
+            (1000*60*60*24))
+
+            /(1000*60*60)
+
+        )
+
+    ).padStart(2,"0");
+
+    minutos.textContent = String(
+
+        Math.floor(
+
+            (distancia %
+
+            (1000*60*60))
+
+            /(1000*60)
+
+        )
+
+    ).padStart(2,"0");
+
+    segundos.textContent = String(
+
+        Math.floor(
+
+            (distancia %
+
+            (1000*60))
+
+            /1000
+
+        )
+
+    ).padStart(2,"0");
 
 }
+
 /* ==========================================================
    LOADING
 ========================================================== */
 
-function abrirLoading() {
+function abrirLoading(){
 
-  loading.style.display = "flex";
-
-}
-
-function fecharLoading() {
-
-  loading.style.display = "none";
+    loading.style.display="flex";
 
 }
 
-/* ==========================================================
-   MENSAGENS
-========================================================== */
+function fecharLoading(){
 
-function mostrarMensagem(texto, tipo = "erro") {
-
-  mensagem.style.display = "block";
-
-  mensagem.className = "mensagem";
-
-  mensagem.classList.add(tipo);
-
-  mensagem.innerHTML = texto;
-
-}
-
-function limparMensagem() {
-
-  mensagem.style.display = "none";
-
-  mensagem.className = "mensagem";
-
-  mensagem.innerHTML = "";
+    loading.style.display="none";
 
 }
 
@@ -336,223 +303,265 @@ function limparMensagem() {
    MODAL
 ========================================================== */
 
-function abrirModal() {
+function abrirModal(){
 
-  modal.style.display = "flex";
-
-}
-
-function fecharModalSucesso() {
-
-  modal.style.display = "none";
+    modal.style.display="flex";
 
 }
 
+function fecharModalSucesso(){
+
+    modal.style.display="none";
+
+}
+
+/* ==========================================================
+   MENSAGENS
+========================================================== */
+
+function mostrarMensagem(texto,tipo){
+
+    mensagem.className="mensagem";
+
+    mensagem.classList.add(tipo);
+
+    mensagem.innerHTML=texto;
+
+    mensagem.style.display="block";
+
+}
+
+function limparMensagem(){
+
+    mensagem.style.display="none";
+
+    mensagem.innerHTML="";
+
+}
+
+/* ==========================================================
+   CONTINUA...
+========================================================== */
 /* ==========================================================
    BUSCAR CONVITE
 ========================================================== */
 
-async function buscarConvite() {
+async function buscarConvite(){
 
-  limparMensagem();
+    limparMensagem();
 
-  resultado.style.display = "none";
+    resultado.style.display = "none";
 
-  listaConvidados.innerHTML = "";
+    listaConvidados.innerHTML = "";
 
-  totalSelecionados.textContent = "0";
+    totalSelecionados.textContent = "0";
 
-  app.confirmados = [];
+    conviteAtual = "";
 
-  const nome = representante.value.trim();
+    pessoas = [];
 
-  if (!nome) {
+    confirmados = [];
 
-    mostrarMensagem(
-      "Digite o nome do representante."
-    );
+    const nome = representante.value.trim();
 
-    return;
+    if(nome.length < 3){
 
-  }
+        mostrarMensagem(
+            "Digite o nome do representante.",
+            "erro"
+        );
 
-  abrirLoading();
-
-  try {
-
-    const resposta = await fetch(
-
-      `${SCRIPT_URL}?representante=${encodeURIComponent(nome)}`
-
-    );
-
-    const dados = await resposta.json();
-
-    fecharLoading();
-
-    processarConvite(dados);
-
-  }
-
-  catch (erro) {
-
-    fecharLoading();
-
-    console.error(erro);
-
-    mostrarMensagem(
-
-      "Não foi possível conectar ao servidor."
-
-    );
-
-  }
-
-}
-
-/* ==========================================================
-   PROCESSAR RESPOSTA
-========================================================== */
-
-function processarConvite(dados) {
-
-  if (!dados) {
-
-    mostrarMensagem(
-
-      "Resposta inválida."
-
-    );
-
-    return;
-
-  }
-
-  if (dados.status === "erro") {
-
-    mostrarMensagem(
-
-      dados.mensagem
-
-    );
-
-    return;
-
-  }
-
-  if (dados.status === "confirmado") {
-
-    mostrarMensagem(
-
-      dados.mensagem,
-
-      "aviso"
-
-    );
-
-    return;
-
-  }
-
-  app.convite = dados.convite;
-
-  app.pessoas = dados.pessoas || [];
-
-  app.confirmados = [];
-
-  resultado.style.display = "block";
-
-  nomeConvite.textContent = dados.convite;
-
-  descricaoConvite.textContent =
-    "Selecione quem irá comparecer.";
-
-  tipoConvite.textContent =
-    dados.tipo || "Família";
-
-  criarListaConvidados();
-
-}
-
-/* ==========================================================
-   LISTA DE CONVIDADOS
-========================================================== */
-
-function criarListaConvidados() {
-
-  listaConvidados.innerHTML = "";
-
-  app.pessoas.forEach((nome) => {
-
-    const item = document.createElement("div");
-
-    item.className = "convidado";
-
-    const label = document.createElement("label");
-
-    const checkbox = document.createElement("input");
-
-    checkbox.type = "checkbox";
-
-    checkbox.value = nome;
-
-    checkbox.addEventListener(
-
-      "change",
-
-      atualizarSelecionados
-
-    );
-
-    const span = document.createElement("span");
-
-    span.textContent = nome;
-
-    label.appendChild(checkbox);
-
-    label.appendChild(span);
-
-    item.appendChild(label);
-
-    listaConvidados.appendChild(item);
-
-  });
-
-}
-
-/* ==========================================================
-   CONTADOR DE SELECIONADOS
-========================================================== */
-
-function atualizarSelecionados() {
-
-  app.confirmados = [];
-
-  const checkboxes =
-
-    listaConvidados.querySelectorAll(
-
-      "input[type='checkbox']"
-
-    );
-
-  checkboxes.forEach((checkbox) => {
-
-    if (checkbox.checked) {
-
-      app.confirmados.push(
-
-        checkbox.value
-
-      );
+        return;
 
     }
 
-  });
+    abrirLoading();
 
-  totalSelecionados.textContent =
+    try{
 
-    app.confirmados.length;
+        const resposta = await fetch(
+
+            `${SCRIPT_URL}?representante=${encodeURIComponent(nome)}`
+
+        );
+
+        const dados = await resposta.json();
+
+        fecharLoading();
+
+        if(dados.status !== "ok"){
+
+            mostrarMensagem(
+
+                dados.mensagem,
+
+                "erro"
+
+            );
+
+            return;
+
+        }
+
+        conviteAtual = dados.convite;
+
+        pessoas = dados.pessoas || [];
+
+        nomeConvite.textContent = dados.convite;
+
+        descricaoConvite.textContent =
+            "Selecione quem irá comparecer.";
+
+        tipoConvite.textContent =
+            dados.statusConvite || "Pendente";
+
+        resultado.style.display = "block";
+
+        criarLista();
+
+        salvarRepresentante();
+
+    }
+
+    catch(erro){
+
+        fecharLoading();
+
+        console.error(erro);
+
+        mostrarMensagem(
+
+            "Erro ao conectar com o servidor.",
+
+            "erro"
+
+        );
+
+    }
+
+}
+
+/* ==========================================================
+   CRIAR LISTA
+========================================================== */
+
+function criarLista(){
+
+    listaConvidados.innerHTML = "";
+
+    pessoas.forEach(function(nome){
+
+        const item =
+            document.createElement("div");
+
+        item.className = "convidado";
+
+        const label =
+            document.createElement("label");
+
+        const check =
+            document.createElement("input");
+
+        check.type = "checkbox";
+
+        check.value = nome;
+
+        const span =
+            document.createElement("span");
+
+        span.textContent = nome;
+
+        label.appendChild(check);
+
+        label.appendChild(span);
+
+        item.appendChild(label);
+
+        listaConvidados.appendChild(item);
+
+        check.addEventListener(
+
+            "change",
+
+            atualizarSelecionados
+
+        );
+
+    });
+
+}
+
+/* ==========================================================
+   CONTAR SELECIONADOS
+========================================================== */
+
+function atualizarSelecionados(){
+
+    confirmados = [];
+
+    const checks =
+
+        listaConvidados.querySelectorAll(
+
+            "input[type=checkbox]"
+
+        );
+
+    checks.forEach(function(check){
+
+        if(check.checked){
+
+            confirmados.push(
+
+                check.value
+
+            );
+
+        }
+
+    });
+
+    totalSelecionados.textContent =
+
+        confirmados.length;
+
+}
+
+/* ==========================================================
+   SALVAR REPRESENTANTE
+========================================================== */
+
+function salvarRepresentante(){
+
+    localStorage.setItem(
+
+        "representante",
+
+        representante.value.trim()
+
+    );
+
+}
+
+/* ==========================================================
+   RESTAURAR REPRESENTANTE
+========================================================== */
+
+function restaurarRepresentante(){
+
+    const ultimo =
+
+        localStorage.getItem(
+
+            "representante"
+
+        );
+
+    if(ultimo){
+
+        representante.value = ultimo;
+
+    }
 
 }
 /* ==========================================================
@@ -561,104 +570,110 @@ function atualizarSelecionados() {
 
 async function confirmarPresenca() {
 
-  limparMensagem();
+    limparMensagem();
 
-  if (app.confirmados.length === 0) {
+    if (!conviteAtual) {
 
-    mostrarMensagem(
-      "Selecione pelo menos uma pessoa."
-    );
+        mostrarMensagem(
+            "Busque um convite primeiro.",
+            "erro"
+        );
 
-    return;
-
-  }
-
-  abrirLoading();
-
-  btnConfirmar.disabled = true;
-
-  try {
-
-    const resposta = await fetch(
-
-      SCRIPT_URL,
-
-      {
-
-        method: "POST",
-
-        headers: {
-
-          "Content-Type": "application/json"
-
-        },
-
-        body: JSON.stringify({
-
-          convite: app.convite,
-
-          presentes: app.confirmados
-
-        })
-
-      }
-
-    );
-
-    const texto = await resposta.text();
-
-console.log("Resposta do servidor:");
-
-console.log(texto);
-
-const retorno = JSON.parse(texto);
-
-    fecharLoading();
-
-    if (retorno.status === "ok") {
-
-      abrirModal();
-
-      bloquearFormulario();
-
-      salvarRepresentante();
-
-      return;
+        return;
 
     }
 
-    btnConfirmar.disabled = false;
+    if (confirmados.length === 0) {
 
-    mostrarMensagem(
+        mostrarMensagem(
+            "Selecione pelo menos uma pessoa.",
+            "erro"
+        );
 
-      retorno.mensagem ||
+        return;
 
-      "Não foi possível confirmar."
+    }
 
-    );
+    abrirLoading();
 
-  }
+    try {
 
-  catch (erro) {
+        const parametros = new URLSearchParams();
 
-    fecharLoading();
+        parametros.append(
+            "convite",
+            conviteAtual
+        );
 
-    btnConfirmar.disabled = false;
+        parametros.append(
+            "representante",
+            representante.value.trim()
+        );
 
-    console.error("ERRO COMPLETO:", erro);
+        parametros.append(
+            "presentes",
+            confirmados.join(",")
+        );
 
-    alert(
-        erro.message +
-        "\n\n" +
-        erro.stack
-    );
+        const resposta = await fetch(
 
-    mostrarMensagem(
-        erro.message,
-        "erro"
-    );
+            SCRIPT_URL,
 
-}
+            {
+
+                method: "POST",
+
+                body: parametros
+
+            }
+
+        );
+
+        const retorno = await resposta.json();
+
+        fecharLoading();
+
+        if (retorno.status === "ok") {
+
+            abrirModal();
+
+            bloquearFormulario();
+
+            localStorage.removeItem(
+                "representante"
+            );
+
+            return;
+
+        }
+
+        mostrarMensagem(
+
+            retorno.mensagem ||
+
+            "Não foi possível confirmar.",
+
+            "erro"
+
+        );
+
+    }
+
+    catch (erro) {
+
+        fecharLoading();
+
+        console.error(erro);
+
+        mostrarMensagem(
+
+            "Erro ao conectar com o servidor.",
+
+            "erro"
+
+        );
+
+    }
 
 }
 
@@ -668,126 +683,273 @@ const retorno = JSON.parse(texto);
 
 function bloquearFormulario() {
 
-  btnBuscar.disabled = true;
+    btnBuscar.disabled = true;
 
-  btnConfirmar.disabled = true;
+    btnConfirmar.disabled = true;
 
-  representante.disabled = true;
+    representante.disabled = true;
 
-  const checkboxes =
+    const checks =
 
-    listaConvidados.querySelectorAll(
+        listaConvidados.querySelectorAll(
 
-      "input"
+            "input[type=checkbox]"
 
-    );
+        );
 
-  checkboxes.forEach((item)=>{
+    checks.forEach(function (check) {
 
-    item.disabled = true;
+        check.disabled = true;
 
-  });
+    });
 
 }
 
 /* ==========================================================
-   PIX
+   DESBLOQUEAR FORMULÁRIO
+========================================================== */
+
+function desbloquearFormulario() {
+
+    btnBuscar.disabled = false;
+
+    btnConfirmar.disabled = false;
+
+    representante.disabled = false;
+
+    const checks =
+
+        listaConvidados.querySelectorAll(
+
+            "input[type=checkbox]"
+
+        );
+
+    checks.forEach(function (check) {
+
+        check.disabled = false;
+
+    });
+
+}
+
+/* ==========================================================
+   LIMPAR FORMULÁRIO
+========================================================== */
+
+function limparFormulario() {
+
+    conviteAtual = "";
+
+    pessoas = [];
+
+    confirmados = [];
+
+    representante.value = "";
+
+    listaConvidados.innerHTML = "";
+
+    totalSelecionados.textContent = "0";
+
+    resultado.style.display = "none";
+
+}
+
+/* ==========================================================
+   FECHAR MODAL
+========================================================== */
+
+window.addEventListener("click", function (e) {
+
+    if (e.target === modal) {
+
+        fecharModalSucesso();
+
+    }
+
+});
+/* ==========================================================
+   COPIAR CHAVE PIX
 ========================================================== */
 
 async function copiarChavePix() {
 
-  try {
+    if (!pix) return;
 
-    await navigator.clipboard.writeText(
+    try {
 
-      pix.innerText
+        await navigator.clipboard.writeText(
 
-    );
+            pix.textContent.trim()
 
-    pixMensagem.innerHTML =
+        );
 
-      "💙 Chave PIX copiada!";
+        pixMensagem.textContent =
+            "💙 Chave PIX copiada!";
 
-    setTimeout(()=>{
+        setTimeout(() => {
 
-      pixMensagem.innerHTML="";
+            pixMensagem.textContent = "";
 
-    },3000);
+        }, 3000);
 
-  }
+    }
 
-  catch {
+    catch (erro) {
 
-    alert(
+        alert("Não foi possível copiar a chave PIX.");
 
-      "Não foi possível copiar a chave."
-
-    );
-
-  }
+    }
 
 }
 
 /* ==========================================================
-   LOCAL STORAGE
+   BOTÃO MÚSICA
 ========================================================== */
 
-function salvarRepresentante(){
+function alternarMusica() {
 
-  localStorage.setItem(
+    if (!musica) return;
 
-    "representante",
+    if (musicaLigada) {
 
-    representante.value.trim()
+        musica.pause();
 
-  );
+        btnMusica.textContent = "🎵";
 
-}
+        musicaLigada = false;
 
-function carregarRepresentante(){
+    } else {
 
-  const ultimo =
+        musica.play();
 
-    localStorage.getItem(
+        btnMusica.textContent = "🔊";
 
-      "representante"
+        musicaLigada = true;
 
-    );
-
-  if(ultimo){
-
-    representante.value = ultimo;
-
-  }
+    }
 
 }
 
 /* ==========================================================
-   MODAL
+   BOTÃO TOPO
+========================================================== */
+
+function controlarBotaoTopo() {
+
+    if (!btnTopo) return;
+
+    if (window.scrollY > 400) {
+
+        btnTopo.classList.add("show");
+
+    } else {
+
+        btnTopo.classList.remove("show");
+
+    }
+
+}
+
+function voltarAoTopo() {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+/* ==========================================================
+   CONEXÃO
 ========================================================== */
 
 window.addEventListener(
 
-  "click",
+    "offline",
 
-  function(e){
+    () => {
 
-    if(e.target===modal){
+        mostrarMensagem(
 
-      fecharModalSucesso();
+            "Você está sem conexão com a internet.",
+
+            "erro"
+
+        );
 
     }
 
-  }
+);
+
+window.addEventListener(
+
+    "online",
+
+    () => {
+
+        mostrarMensagem(
+
+            "Conexão restaurada.",
+
+            "sucesso"
+
+        );
+
+        setTimeout(
+
+            limparMensagem,
+
+            2500
+
+        );
+
+    }
 
 );
+
 /* ==========================================================
-   RESTAURAR ÚLTIMO REPRESENTANTE
+   UTILITÁRIOS
 ========================================================== */
 
-function restaurarSessao() {
+function bloquearBotoes() {
 
-  carregarRepresentante();
+    btnBuscar.disabled = true;
+
+    btnConfirmar.disabled = true;
+
+}
+
+function liberarBotoes() {
+
+    btnBuscar.disabled = false;
+
+    btnConfirmar.disabled = false;
+
+}
+
+function limparStorage() {
+
+    localStorage.removeItem(
+
+        "representante"
+
+    );
+
+}
+
+function resetarSistema() {
+
+    limparFormulario();
+
+    desbloquearFormulario();
+
+    limparMensagem();
+
+    liberarBotoes();
 
 }
 
@@ -797,192 +959,93 @@ function restaurarSessao() {
 
 function animarLista() {
 
-  const itens =
+    const itens =
 
-    listaConvidados.querySelectorAll(
+        document.querySelectorAll(
 
-      ".convidado"
+            ".convidado"
 
-    );
+        );
 
-  itens.forEach((item,index)=>{
+    itens.forEach(
 
-    item.style.opacity="0";
+        (item, index) => {
 
-    item.style.transform="translateY(20px)";
+            item.style.opacity = "0";
 
-    setTimeout(()=>{
+            item.style.transform =
+                "translateY(20px)";
 
-      item.style.transition=".4s";
+            setTimeout(() => {
 
-      item.style.opacity="1";
+                item.style.transition =
+                    ".35s";
 
-      item.style.transform="translateY(0)";
+                item.style.opacity = "1";
 
-    },index*70);
+                item.style.transform =
+                    "translateY(0)";
 
-  });
+            }, index * 80);
 
-}
-
-const observer = new MutationObserver(()=>{
-
-  if(listaConvidados.children.length){
-
-    animarLista();
-
-  }
-
-});
-
-observer.observe(
-
-  listaConvidados,
-
-  {
-
-    childList:true
-
-  }
-
-);
-
-/* ==========================================================
-   CONEXÃO
-========================================================== */
-
-window.addEventListener(
-
-  "offline",
-
-  ()=>{
-
-    mostrarMensagem(
-
-      "Você está sem conexão com a internet."
+        }
 
     );
-
-  }
-
-);
-
-window.addEventListener(
-
-  "online",
-
-  ()=>{
-
-    mostrarMensagem(
-
-      "Conexão restabelecida.",
-
-      "sucesso"
-
-    );
-
-    setTimeout(
-
-      limparMensagem,
-
-      2500
-
-    );
-
-  }
-
-);
-
-/* ==========================================================
-   UTILITÁRIOS
-========================================================== */
-
-function limparFormulario(){
-
-  listaConvidados.innerHTML="";
-
-  totalSelecionados.textContent="0";
-
-  resultado.style.display="none";
-
-  app.pessoas=[];
-
-  app.confirmados=[];
-
-  app.convite="";
-
-}
-
-function resetarSistema(){
-
-  btnBuscar.disabled=false;
-
-  btnConfirmar.disabled=false;
-
-  representante.disabled=false;
-
-  limparFormulario();
-
-}
-
-function mostrarErroServidor(erro){
-
-  console.error(erro);
-
-  mostrarMensagem(
-
-    "Ocorreu um erro inesperado."
-
-  );
 
 }
 
 /* ==========================================================
-   INICIALIZAÇÃO FINAL
+   OBSERVADOR DA LISTA
 ========================================================== */
 
-window.addEventListener(
+const observer = new MutationObserver(
 
-  "load",
+    () => {
 
-  ()=>{
+        if (
 
-    restaurarSessao();
+            listaConvidados &&
 
-  }
+            listaConvidados.children.length > 0
+
+        ) {
+
+            animarLista();
+
+        }
+
+    }
 
 );
 
-/* ==========================================================
-   DEBUG
-========================================================== */
+if (listaConvidados) {
 
-console.clear();
+    observer.observe(
+
+        listaConvidados,
+
+        {
+
+            childList: true
+
+        }
+
+    );
+
+}
+
+/* ==========================================================
+   LOG
+========================================================== */
 
 console.log(
 
-  "%cRSVP Casamento",
+    "%cSistema RSVP carregado com sucesso 💙",
 
-  "color:#7da9c7;font-size:18px;font-weight:bold"
-
-);
-
-console.log(
-
-  "%cSistema iniciado com sucesso.",
-
-  "color:#4caf50;font-size:13px"
-
-);
-
-console.log(
-
-  "%cVersão 2.0",
-
-  "color:#999;font-size:12px"
+    "color:#8EAFC5;font-size:15px;font-weight:bold;"
 
 );
 
 /* ==========================================================
-   FIM DO SCRIPT
+   FIM DO ARQUIVO
 ========================================================== */
