@@ -9,7 +9,7 @@
 ========================================================== */
 
 const SCRIPT_URL =
- "https://script.google.com/macros/s/AKfycbwifHgAo9Tf17Sdjy3DmXNFDHxeQ2wm_XcBt4F1satFnmfpf84zyV3k-AG26G7PXMXtsw/exec"
+  "https://script.google.com/macros/s/AKfycbwifHgAo9Tf17Sdjy3DmXNFDHxeQ2wm_XcBt4F1satFnmfpf84zyV3k-AG26G7PXMXtsw/exec";
 
 /* ==========================================================
    DATA DO CASAMENTO
@@ -605,13 +605,7 @@ async function confirmarPresenca() {
 
     );
 
-   console.log("Status HTTP:", resposta.status);
-
-const texto = await resposta.text();
-
-console.log("Resposta do servidor:", texto);
-
-const retorno = JSON.parse(texto);
+    const retorno = await resposta.json();
 
     fecharLoading();
 
@@ -641,11 +635,11 @@ const retorno = JSON.parse(texto);
 
   catch (erro) {
 
+    console.error(erro);
+
     fecharLoading();
 
     btnConfirmar.disabled = false;
-
-    console.error(erro);
 
     mostrarMensagem(
 
@@ -663,65 +657,27 @@ const retorno = JSON.parse(texto);
 
 function bloquearFormulario() {
 
-  btnConfirmar.disabled = true;
-
   btnBuscar.disabled = true;
+
+  btnConfirmar.disabled = true;
 
   representante.disabled = true;
 
-  listaConvidados
+  const checkboxes =
 
-    .querySelectorAll("input")
+    listaConvidados.querySelectorAll(
 
-    .forEach(item => {
-
-      item.disabled = true;
-
-    });
-
-}
-
-/* ==========================================================
-   LOCAL STORAGE
-========================================================== */
-
-function salvarRepresentante() {
-
-  localStorage.setItem(
-
-    "representante",
-
-    representante.value.trim()
-
-  );
-
-}
-
-function restaurarRepresentante() {
-
-  const ultimo =
-
-    localStorage.getItem(
-
-      "representante"
+      "input"
 
     );
 
-  if (ultimo) {
+  checkboxes.forEach((item)=>{
 
-    representante.value = ultimo;
+    item.disabled = true;
 
-  }
+  });
 
 }
-
-window.addEventListener(
-
-  "load",
-
-  restaurarRepresentante
-
-);
 
 /* ==========================================================
    PIX
@@ -741,9 +697,9 @@ async function copiarChavePix() {
 
       "💙 Chave PIX copiada!";
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
-      pixMensagem.innerHTML = "";
+      pixMensagem.innerHTML="";
 
     },3000);
 
@@ -753,7 +709,7 @@ async function copiarChavePix() {
 
     alert(
 
-      "Não foi possível copiar."
+      "Não foi possível copiar a chave."
 
     );
 
@@ -762,40 +718,70 @@ async function copiarChavePix() {
 }
 
 /* ==========================================================
-   LIMPAR FORMULÁRIO
+   LOCAL STORAGE
 ========================================================== */
 
-function limparFormulario() {
+function salvarRepresentante(){
 
-  resultado.style.display = "none";
+  localStorage.setItem(
 
-  listaConvidados.innerHTML = "";
+    "representante",
 
-  totalSelecionados.textContent = "0";
+    representante.value.trim()
 
-  app.convite = "";
+  );
 
-  app.pessoas = [];
+}
 
-  app.confirmados = [];
+function carregarRepresentante(){
+
+  const ultimo =
+
+    localStorage.getItem(
+
+      "representante"
+
+    );
+
+  if(ultimo){
+
+    representante.value = ultimo;
+
+  }
 
 }
 
 /* ==========================================================
-   RESETAR BOTÃO
+   MODAL
 ========================================================== */
 
-function desbloquearFormulario(){
+window.addEventListener(
 
-  representante.disabled = false;
+  "click",
 
-  btnBuscar.disabled = false;
+  function(e){
 
-  btnConfirmar.disabled = false;
+    if(e.target===modal){
+
+      fecharModalSucesso();
+
+    }
+
+  }
+
+);
+/* ==========================================================
+   RESTAURAR ÚLTIMO REPRESENTANTE
+========================================================== */
+
+function restaurarSessao() {
+
+  carregarRepresentante();
 
 }
+
 /* ==========================================================
-   ANIMAÇÃO DA LISTA
+   ANIMAÇÃO DOS CONVIDADOS
 ========================================================== */
 
 function animarLista() {
@@ -808,31 +794,29 @@ function animarLista() {
 
     );
 
-  itens.forEach((item, index) => {
+  itens.forEach((item,index)=>{
 
-    item.style.opacity = "0";
+    item.style.opacity="0";
 
-    item.style.transform = "translateY(20px)";
+    item.style.transform="translateY(20px)";
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
-      item.style.transition =
-        "all .4s ease";
+      item.style.transition=".4s";
 
-      item.style.opacity = "1";
+      item.style.opacity="1";
 
-      item.style.transform =
-        "translateY(0)";
+      item.style.transform="translateY(0)";
 
-    }, index * 80);
+    },index*70);
 
   });
 
 }
 
-const observer = new MutationObserver(() => {
+const observer = new MutationObserver(()=>{
 
-  if (listaConvidados.children.length > 0) {
+  if(listaConvidados.children.length){
 
     animarLista();
 
@@ -846,7 +830,7 @@ observer.observe(
 
   {
 
-    childList: true
+    childList:true
 
   }
 
@@ -860,7 +844,7 @@ window.addEventListener(
 
   "offline",
 
-  () => {
+  ()=>{
 
     mostrarMensagem(
 
@@ -876,11 +860,11 @@ window.addEventListener(
 
   "online",
 
-  () => {
+  ()=>{
 
     mostrarMensagem(
 
-      "Conexão restaurada.",
+      "Conexão restabelecida.",
 
       "sucesso"
 
@@ -890,148 +874,104 @@ window.addEventListener(
 
       limparMensagem,
 
-      3000
+      2500
 
     );
 
   }
 
 );
-
-/* ==========================================================
-   MENSAGEM TEMPORÁRIA
-========================================================== */
-
-function mensagemTemporaria(
-
-  texto,
-
-  tipo = "sucesso",
-
-  tempo = 3000
-
-) {
-
-  mostrarMensagem(
-
-    texto,
-
-    tipo
-
-  );
-
-  setTimeout(
-
-    limparMensagem,
-
-    tempo
-
-  );
-
-}
 
 /* ==========================================================
    UTILITÁRIOS
 ========================================================== */
 
-function habilitarBotao(botao) {
+function limparFormulario(){
 
-  if (botao) {
+  listaConvidados.innerHTML="";
 
-    botao.disabled = false;
+  totalSelecionados.textContent="0";
 
-  }
+  resultado.style.display="none";
 
-}
+  app.pessoas=[];
 
-function desabilitarBotao(botao) {
+  app.confirmados=[];
 
-  if (botao) {
-
-    botao.disabled = true;
-
-  }
+  app.convite="";
 
 }
 
-function formatarQuantidade(valor) {
+function resetarSistema(){
 
-  return Number(valor) || 0;
+  btnBuscar.disabled=false;
+
+  btnConfirmar.disabled=false;
+
+  representante.disabled=false;
+
+  limparFormulario();
 
 }
 
-/* ==========================================================
-   DEBUG
-========================================================== */
+function mostrarErroServidor(erro){
 
-function debug(...dados) {
+  console.error(erro);
 
-  console.log(
+  mostrarMensagem(
 
-    "[RSVP]",
-
-    ...dados
+    "Ocorreu um erro inesperado."
 
   );
 
 }
 
 /* ==========================================================
-   LOGS
-========================================================== */
-
-debug("Sistema iniciado.");
-
-debug("Script carregado com sucesso.");
-
-/* ==========================================================
-   TRATAMENTO GLOBAL DE ERROS
+   INICIALIZAÇÃO FINAL
 ========================================================== */
 
 window.addEventListener(
 
-  "error",
+  "load",
 
-  function(e){
+  ()=>{
 
-    console.error(
-
-      "Erro:",
-
-      e.error
-
-    );
-
-  }
-
-);
-
-window.addEventListener(
-
-  "unhandledrejection",
-
-  function(e){
-
-    console.error(
-
-      "Promise:",
-
-      e.reason
-
-    );
+    restaurarSessao();
 
   }
 
 );
 
 /* ==========================================================
-   FIM
+   DEBUG
 ========================================================== */
+
+console.clear();
 
 console.log(
 
-  "%cRSVP Casamento carregado com sucesso 💙",
+  "%cRSVP Casamento",
 
-  "color:#91AFC8;font-size:16px;font-weight:bold;"
+  "color:#7da9c7;font-size:18px;font-weight:bold"
 
 );
+
+console.log(
+
+  "%cSistema iniciado com sucesso.",
+
+  "color:#4caf50;font-size:13px"
+
+);
+
+console.log(
+
+  "%cVersão 2.0",
+
+  "color:#999;font-size:12px"
+
+);
+
+/* ==========================================================
+   FIM DO SCRIPT
+========================================================== */
