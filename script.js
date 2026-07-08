@@ -9,7 +9,7 @@
 ========================================================== */
 
 const SCRIPT_URL =
-  "COLE_AQUI_A_URL_DO_SEU_APPS_SCRIPT";
+  "https://script.google.com/macros/s/AKfycbz2vB8zcdOs5pt3Hn8V8MTRR7m3DTgXpMOSX4zqmxy20j1MffmoEEW_sEgIaO5cEH4Nwg/exec";
 
 /* ==========================================================
    DATA DO CASAMENTO
