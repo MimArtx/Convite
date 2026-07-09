@@ -1,10 +1,4 @@
 /* ==========================================================
-   RSVP CASAMENTO
-   Lucas & Yasmim
-   style.css
-========================================================== */
-
-/* ==========================================================
    RESET
 ========================================================== */
 
@@ -14,728 +8,417 @@
     box-sizing:border-box;
 }
 
+:root{
+
+    --verde:#6b8f97;
+    --verde-hover:#53767d;
+    --branco:#ffffff;
+    --cinza:#666;
+    --cinza-claro:#999;
+    --fundo:#f7f8fa;
+    --sombra:0 10px 30px rgba(0,0,0,.08);
+
+}
+
 html{
     scroll-behavior:smooth;
 }
 
 body{
 
-    font-family:'Poppins',sans-serif;
+    background:var(--fundo);
 
-    background:#f8fbfd;
+    font-family:'Montserrat',sans-serif;
 
-    color:#3d4a57;
-
-    line-height:1.7;
+    color:#333;
 
     overflow-x:hidden;
 
 }
 
 /* ==========================================================
-   VARIÁVEIS
+CAPA
 ========================================================== */
 
-:root{
+#cover{
 
-    --primary:#AFC7DA;
-    --primary-dark:#8EAFC5;
-    --secondary:#DCEAF4;
-    --white:#ffffff;
-    --background:#F8FBFD;
-    --text:#4D5B67;
-    --title:#2E3B47;
-    --shadow:0 12px 35px rgba(0,0,0,.08);
-    --radius:22px;
-    --transition:.35s;
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:url("img/imagem-principal.jpg")
+    center center/cover no-repeat;
+
+}
+
+#cover .overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+}
+
+.cover-content{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    color:white;
+
+    animation:fadeUp 1.3s ease;
+
+}
+
+.cover-content h1{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:65px;
+
+    line-height:1.2;
+
+    letter-spacing:3px;
+
+}
+
+.cover-content p{
+
+    margin-top:20px;
+
+    font-size:18px;
+
+    font-weight:300;
+
+}
+
+#btnAbrir{
+
+    margin-top:40px;
+
+    padding:18px 50px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:white;
+
+    color:#333;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:var(--sombra);
+
+}
+
+#btnAbrir:hover{
+
+    transform:translateY(-3px);
 
 }
 
 /* ==========================================================
-   CONTAINER
+SITE
+========================================================== */
+
+#site{
+
+    display:none;
+
+    max-width:520px;
+
+    margin:auto;
+
+    background:white;
+
+    box-shadow:0 0 30px rgba(0,0,0,.08);
+
+}
+
+/* ==========================================================
+HERO
+========================================================== */
+
+.hero img{
+
+    width:100%;
+
+    height:470px;
+
+    object-fit:cover;
+
+}
+
+.hero-text{
+
+    padding:45px 35px;
+
+    text-align:center;
+
+}
+
+.hero-text h1{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:45px;
+
+}
+
+.hero-text span{
+
+    color:var(--verde);
+
+}
+
+.linha{
+
+    width:70px;
+
+    height:2px;
+
+    background:var(--verde);
+
+    margin:20px auto;
+
+}
+
+.versiculo{
+
+    font-style:italic;
+
+    line-height:1.7;
+
+    color:var(--cinza);
+
+}
+
+.intro{
+
+    margin-top:25px;
+
+    line-height:1.8;
+
+    color:var(--cinza);
+
+}
+
+/* ==========================================================
+CONTADOR
+========================================================== */
+
+.contador{
+
+    text-align:center;
+
+    padding:45px 20px;
+
+    background:#fbfbfb;
+
+}
+
+.contador h2{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:32px;
+
+    color:var(--verde);
+
+    letter-spacing:3px;
+
+}
+
+#contador{
+
+    margin-top:15px;
+
+    color:var(--cinza);
+
+    font-size:17px;
+
+}
+
+/* ==========================================================
+CONTAINER
 ========================================================== */
 
 .container{
 
-    width:min(1100px,92%);
-
-    margin:auto;
+    padding:35px;
 
 }
 
-/* ==========================================================
-   LINKS
-========================================================== */
+.foto{
 
-a{
+    width:100%;
 
-    text-decoration:none;
+    height:260px;
 
-    color:inherit;
+    object-fit:cover;
+
+    border-radius:20px;
+
+    margin-bottom:25px;
 
 }
 
+.card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:28px;
+
+    box-shadow:var(--sombra);
+
+    margin-bottom:25px;
+
+}
+
+.card h2{
+
+    font-family:'Playfair Display',serif;
+
+    margin-bottom:18px;
+
+    color:#333;
+
+}
+
+.card p{
+
+    line-height:1.8;
+
+    color:var(--cinza);
+
+    margin-bottom:12px;
+
+}
 /* ==========================================================
-   BOTÕES
+BOTÕES
 ========================================================== */
 
-button{
+.botao{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:15px;
 
     border:none;
 
+    border-radius:40px;
+
+    background:var(--verde);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:500;
+
     cursor:pointer;
 
-    transition:.35s;
+    transition:.3s;
 
-    font-family:inherit;
+    text-decoration:none;
 
 }
 
-button:hover{
+.botao:hover{
+
+    background:var(--verde-hover);
 
     transform:translateY(-2px);
 
 }
 
 /* ==========================================================
-   COVER
+TIMELINE
 ========================================================== */
 
-.cover{
-
-    position:fixed;
-
-    inset:0;
-
-    background:linear-gradient(
-
-        180deg,
-
-        #ffffff,
-
-        #edf5fb
-
-    );
+.timeline{
 
     display:flex;
 
-    justify-content:center;
+    flex-direction:column;
 
-    align-items:center;
-
-    z-index:9999;
+    gap:18px;
 
 }
 
-.cover-content{
-
-    text-align:center;
-
-    max-width:650px;
-
-    padding:40px;
-
-}
-
-.cover-date{
-
-    letter-spacing:4px;
-
-    color:#7a97ad;
-
-    font-size:15px;
-
-    margin-bottom:18px;
-
-}
-
-.cover h1{
-
-    font-family:'Great Vibes',cursive;
-
-    font-size:78px;
-
-    color:var(--title);
-
-    font-weight:400;
-
-    margin-bottom:18px;
-
-}
-
-.cover h1 span{
-
-    color:var(--primary-dark);
-
-}
-
-.cover-text{
-
-    font-size:17px;
-
-    color:#60707d;
-
-    margin-bottom:35px;
-
-    line-height:1.8;
-
-}
-
-#btnAbrir{
-
-    padding:15px 45px;
-
-    border-radius:999px;
-
-    background:var(--primary);
-
-    color:#fff;
-
-    font-size:16px;
-
-    box-shadow:var(--shadow);
-
-}
-
-#btnAbrir:hover{
-
-    background:var(--primary-dark);
-
-}
-
-/* ==========================================================
-   HERO
-========================================================== */
-
-.hero{
-
-    height:100vh;
-
-    background:
-
-        linear-gradient(
-
-            rgba(255,255,255,.55),
-
-            rgba(255,255,255,.65)
-
-        ),
-
-        url("img/banner.jpg")
-
-        center/cover;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-}
-
-.hero-overlay{
-
-    padding:40px;
-
-}
-
-.hero h1{
-
-    font-family:'Great Vibes',cursive;
-
-    font-size:88px;
-
-    color:var(--title);
-
-    font-weight:400;
-
-}
-
-.hero h1 span{
-
-    color:var(--primary-dark);
-
-}
-
-.hero p{
-
-    margin-top:20px;
-
-    font-size:22px;
-
-    color:#53626e;
-
-}
-
-.hero small{
-
-    display:block;
-
-    margin-top:12px;
-
-    font-size:16px;
-
-    color:#8096aa;
-
-}
-/* ==========================================================
-   CONTADOR
-========================================================== */
-
-.contador{
-
-    padding:90px 20px;
-
-    text-align:center;
-
-    background:#ffffff;
-
-}
-
-.contador h2{
-
-    font-size:32px;
-
-    color:var(--title);
-
-    margin-bottom:50px;
-
-    font-weight:600;
-
-}
-
-.contador-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:25px;
-
-    max-width:850px;
-
-    margin:auto;
-
-}
-
-.tempo{
-
-    background:var(--white);
-
-    border-radius:var(--radius);
-
-    padding:35px 20px;
-
-    box-shadow:var(--shadow);
-
-    transition:var(--transition);
-
-}
-
-.tempo:hover{
-
-    transform:translateY(-8px);
-
-}
-
-.tempo span{
-
-    display:block;
-
-    font-size:48px;
-
-    font-weight:700;
-
-    color:var(--primary-dark);
-
-    margin-bottom:10px;
-
-}
-
-.tempo small{
-
-    color:#6f8393;
-
-    text-transform:uppercase;
-
-    letter-spacing:2px;
-
-    font-size:13px;
-
-}
-
-/* ==========================================================
-   NOSSA HISTÓRIA
-========================================================== */
-
-.mensagem-casal{
-
-    background:var(--background);
-
-    padding:100px 20px;
-
-}
-
-.mensagem-casal h2{
-
-    text-align:center;
-
-    font-size:42px;
-
-    color:var(--title);
-
-    margin-bottom:40px;
-
-    font-family:'Great Vibes',cursive;
-
-    font-weight:400;
-
-}
-
-.mensagem-casal p{
-
-    max-width:850px;
-
-    margin:20px auto;
-
-    text-align:center;
-
-    font-size:18px;
-
-    color:#5b6c79;
-
-    line-height:1.9;
-
-}
-
-/* ==========================================================
-   EVENTO / CERIMÔNIA
-========================================================== */
-
-.evento{
-
-    padding:100px 20px;
-
-    background:#ffffff;
-
-}
-
-.evento h2{
-
-    text-align:center;
-
-    margin-bottom:50px;
-
-    color:var(--title);
-
-    font-size:38px;
-
-}
-
-.card{
-
-    max-width:700px;
-
-    margin:auto;
-
-    background:#fff;
-
-    border-radius:var(--radius);
-
-    padding:45px;
-
-    text-align:center;
-
-    box-shadow:var(--shadow);
-
-    transition:var(--transition);
-
-}
-
-.card:hover{
-
-    transform:translateY(-6px);
-
-}
-
-.card h3{
-
-    color:var(--primary-dark);
-
-    font-size:28px;
-
-    margin-bottom:20px;
-
-}
-
-.card p{
-
-    margin:12px 0;
-
-    color:#5d6d79;
-
-}
-
-.card a{
-
-    display:inline-block;
-
-    margin-top:25px;
-
-    background:var(--primary);
-
-    color:#fff;
-
-    padding:14px 30px;
-
-    border-radius:999px;
-
-    transition:var(--transition);
-
-}
-
-.card a:hover{
-
-    background:var(--primary-dark);
-
-}
-
-/* ==========================================================
-   PRESENTES
-========================================================== */
-
-.presentes{
-
-    padding:100px 20px;
-
-    background:var(--background);
-
-}
-
-.presentes h2{
-
-    text-align:center;
-
-    font-size:40px;
-
-    color:var(--title);
-
-    margin-bottom:25px;
-
-}
-
-.presentes .descricao{
-
-    max-width:760px;
-
-    margin:0 auto 45px;
-
-    text-align:center;
-
-    color:#5f6f7b;
-
-    line-height:1.8;
-
-}
-
-.card-presente{
-
-    max-width:600px;
-
-    margin:auto;
-
-    background:#fff;
-
-    border-radius:var(--radius);
-
-    padding:45px;
-
-    text-align:center;
-
-    box-shadow:var(--shadow);
-
-}
-
-.card-presente h3{
-
-    color:var(--primary-dark);
-
-    font-size:28px;
-
-    margin-bottom:25px;
-
-}
-
-.pix{
-
-    background:#edf5fb;
-
-    border:2px dashed var(--primary);
+.timeline div{
 
     padding:18px;
 
-    border-radius:15px;
+    border-left:4px solid var(--verde);
 
-    font-weight:600;
+    background:#fafafa;
 
-    color:#4d5b67;
-
-    word-break:break-word;
-
-    margin-bottom:20px;
+    border-radius:10px;
 
 }
 
-#copiarPix{
-
-    background:var(--primary);
-
-    color:#fff;
-
-    padding:14px 30px;
-
-    border-radius:999px;
-
-    font-size:15px;
-
-}
-
-#copiarPix:hover{
-
-    background:var(--primary-dark);
-
-}
-
-#pixMensagem{
+.timeline strong{
 
     display:block;
 
+    color:var(--verde);
+
+    margin-bottom:6px;
+
+    font-size:17px;
+
+}
+
+/* ==========================================================
+CONFIRMAÇÃO
+========================================================== */
+
+#confirmacao{
+
+    padding:35px;
+
+}
+
+#confirmacao input{
+
+    width:100%;
+
+    padding:14px;
+
     margin-top:15px;
 
-    color:#3d8f67;
+    border:1px solid #ddd;
 
-    font-weight:500;
-
-}
-
-/* ==========================================================
-   LOCALIZAÇÃO
-========================================================== */
-
-.localizacao{
-
-    padding:100px 20px;
-
-    background:#ffffff;
-
-}
-
-.localizacao h2{
-
-    text-align:center;
-
-    color:var(--title);
-
-    margin-bottom:45px;
-
-    font-size:38px;
-
-}
-
-.btnMapa{
-
-    display:inline-block;
-
-    margin-top:25px;
-
-    padding:14px 35px;
-
-    background:var(--primary);
-
-    color:#fff;
-
-    border-radius:999px;
-
-    transition:var(--transition);
-
-}
-
-.btnMapa:hover{
-
-    background:var(--primary-dark);
-
-}
-/* ==========================================================
-   RSVP
-========================================================== */
-
-.rsvp{
-
-    padding:100px 20px;
-
-    background:var(--background);
-
-}
-
-.rsvp h2{
-
-    text-align:center;
-
-    font-size:40px;
-
-    color:var(--title);
-
-    margin-bottom:20px;
-
-}
-
-.rsvp .descricao{
-
-    text-align:center;
-
-    max-width:700px;
-
-    margin:0 auto 45px;
-
-    color:#60707d;
-
-}
-
-/* ==========================================================
-   BUSCA
-========================================================== */
-
-.busca{
-
-    max-width:700px;
-
-    margin:0 auto 40px;
-
-    display:flex;
-
-    gap:15px;
-
-    flex-wrap:wrap;
-
-}
-
-.busca input{
-
-    flex:1;
-
-    min-width:250px;
-
-    padding:16px 20px;
-
-    border:2px solid #d7e7f3;
-
-    border-radius:999px;
-
-    background:#fff;
-
-    outline:none;
+    border-radius:12px;
 
     font-size:15px;
 
@@ -743,113 +426,47 @@ button:hover{
 
 }
 
-.busca input:focus{
+#confirmacao input:focus{
 
-    border-color:var(--primary);
+    border-color:var(--verde);
 
-    box-shadow:0 0 0 4px rgba(175,199,218,.25);
+    outline:none;
 
-}
-
-#btnBuscar{
-
-    padding:16px 35px;
-
-    border-radius:999px;
-
-    background:var(--primary);
-
-    color:#fff;
-
-    font-weight:600;
+    box-shadow:0 0 0 3px rgba(107,143,151,.15);
 
 }
 
-#btnBuscar:hover{
+#resultado{
 
-    background:var(--primary-dark);
+    display:none;
 
 }
 
 /* ==========================================================
-   CARD DO CONVITE
+LISTA DE CONVIDADOS
 ========================================================== */
 
-.card-convite{
+#listaConvidados{
 
-    background:#fff;
-
-    border-radius:var(--radius);
-
-    box-shadow:var(--shadow);
-
-    padding:35px;
-
-    margin-bottom:30px;
-
-    text-align:center;
-
-}
-
-.card-convite h3{
-
-    color:var(--title);
-
-    font-size:30px;
-
-    margin-bottom:10px;
-
-}
-
-.card-convite p{
-
-    color:#667684;
-
-    margin-bottom:20px;
-
-}
-
-.badge{
-
-    display:inline-block;
-
-    padding:8px 18px;
-
-    border-radius:999px;
-
-    background:#edf5fb;
-
-    color:var(--primary-dark);
-
-    font-size:14px;
-
-    font-weight:600;
-
-}
-
-/* ==========================================================
-   LISTA DE CONVIDADOS
-========================================================== */
-
-.listaConvidados{
-
-    display:grid;
-
-    gap:15px;
-
-    margin-bottom:35px;
+    margin-top:20px;
 
 }
 
 .convidado{
 
-    background:#fff;
+    display:flex;
 
-    border-radius:18px;
+    align-items:center;
 
-    box-shadow:var(--shadow);
+    justify-content:space-between;
 
-    padding:18px 22px;
+    background:#fafafa;
+
+    padding:14px 18px;
+
+    margin-bottom:12px;
+
+    border-radius:12px;
 
     transition:.3s;
 
@@ -857,7 +474,7 @@ button:hover{
 
 .convidado:hover{
 
-    transform:translateY(-3px);
+    background:#f0f5f6;
 
 }
 
@@ -867,7 +484,7 @@ button:hover{
 
     align-items:center;
 
-    gap:15px;
+    gap:12px;
 
     cursor:pointer;
 
@@ -875,487 +492,102 @@ button:hover{
 
 }
 
-.convidado span{
-
-    font-size:16px;
-
-    color:var(--text);
-
-}
-
 /* ==========================================================
-   CHECKBOX
+CHECKBOX
 ========================================================== */
 
 .convidado input[type="checkbox"]{
 
-    width:22px;
+    width:18px;
 
-    height:22px;
+    height:18px;
 
-    accent-color:var(--primary-dark);
-
-    cursor:pointer;
+    accent-color:var(--verde);
 
 }
 
 /* ==========================================================
-   RODAPÉ RSVP
+TOTAL
 ========================================================== */
 
-.rodape-rsvp{
+#totalSelecionados{
 
-    display:flex;
+    color:var(--verde);
 
-    justify-content:space-between;
+    font-size:20px;
 
-    align-items:center;
-
-    gap:20px;
-
-    flex-wrap:wrap;
-
-}
-
-.total{
-
-    font-size:18px;
-
-    color:var(--title);
-
-}
-
-.total strong{
-
-    color:var(--primary-dark);
-
-    font-size:22px;
-
-}
-
-#btnConfirmar{
-
-    padding:16px 38px;
-
-    background:var(--primary);
-
-    color:#fff;
-
-    border-radius:999px;
-
-    font-size:16px;
-
-    font-weight:600;
-
-}
-
-#btnConfirmar:hover{
-
-    background:var(--primary-dark);
-
-}
-
-#btnConfirmar:disabled{
-
-    opacity:.65;
-
-    cursor:not-allowed;
+    font-weight:bold;
 
 }
 
 /* ==========================================================
-   MENSAGENS
+MENSAGENS
 ========================================================== */
 
-.mensagem{
+#mensagem{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    border-radius:12px;
 
     display:none;
-
-    margin:25px auto;
-
-    max-width:700px;
-
-    padding:16px 22px;
-
-    border-radius:15px;
-
-    text-align:center;
 
     font-weight:500;
 
-}
-
-.mensagem.sucesso{
-
-    display:block;
-
-    background:#e8f7ef;
-
-    color:#2c7b55;
+    text-align:center;
 
 }
 
-.mensagem.erro{
+.sucesso{
 
-    display:block;
+    background:#e9f8ef;
+
+    color:#24774a;
+
+}
+
+.erro{
 
     background:#fdecec;
 
-    color:#b33434;
+    color:#b53030;
 
 }
 
-.mensagem.aviso{
+.aviso{
 
-    display:block;
+    background:#fff8e5;
 
-    background:#fff7e5;
-
-    color:#9b7b17;
+    color:#996c00;
 
 }
 
 /* ==========================================================
-   MODAL
+FOOTER
 ========================================================== */
 
-.modal{
-
-    position:fixed;
-
-    inset:0;
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:rgba(0,0,0,.45);
-
-    z-index:9999;
-
-}
-
-.modal-content{
-
-    width:min(450px,92%);
-
-    background:#fff;
-
-    border-radius:25px;
+footer{
 
     padding:40px;
 
     text-align:center;
 
-    animation:fadeUp .4s ease;
+    color:#999;
+
+    font-size:13px;
 
 }
 
-.modal-icon{
+footer strong{
 
-    font-size:60px;
-
-    margin-bottom:15px;
-
-}
-
-.modal-content h2{
-
-    color:var(--title);
-
-    margin-bottom:15px;
-
-}
-
-.modal-content p{
-
-    color:#667684;
-
-    margin-bottom:30px;
-
-    line-height:1.8;
-
-}
-
-#fecharModal{
-
-    padding:14px 35px;
-
-    border-radius:999px;
-
-    background:var(--primary);
-
-    color:#fff;
-
-}
-
-#fecharModal:hover{
-
-    background:var(--primary-dark);
+    color:var(--verde);
 
 }
 
 /* ==========================================================
-   LOADING
-========================================================== */
-
-.loading{
-
-    position:fixed;
-
-    inset:0;
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:rgba(255,255,255,.75);
-
-    backdrop-filter:blur(3px);
-
-    z-index:99999;
-
-}
-
-.loading-box{
-
-    background:#fff;
-
-    padding:35px 45px;
-
-    border-radius:25px;
-
-    box-shadow:var(--shadow);
-
-    text-align:center;
-
-}
-
-.spinner{
-
-    width:55px;
-
-    height:55px;
-
-    margin:auto;
-
-    border:5px solid #e8eef3;
-
-    border-top:5px solid var(--primary-dark);
-
-    border-radius:50%;
-
-    animation:girar 1s linear infinite;
-
-}
-
-.loading-box p{
-
-    margin-top:18px;
-
-    color:#60707d;
-
-    font-weight:500;
-
-}
-/* ==========================================================
-   FOOTER
-========================================================== */
-
-.footer{
-
-    background:#ffffff;
-
-    padding:80px 20px;
-
-    text-align:center;
-
-    border-top:1px solid #e7eef4;
-
-}
-
-.footer h2{
-
-    font-family:'Great Vibes',cursive;
-
-    font-size:58px;
-
-    color:var(--title);
-
-    font-weight:400;
-
-    margin-bottom:15px;
-
-}
-
-.footer h2 span{
-
-    color:var(--primary-dark);
-
-}
-
-.footer p{
-
-    color:#60707d;
-
-    margin-bottom:10px;
-
-    font-size:17px;
-
-}
-
-.footer small{
-
-    color:#8a9baa;
-
-    font-size:14px;
-
-}
-
-/* ==========================================================
-   BOTÃO MÚSICA
-========================================================== */
-
-.btn-musica{
-
-    position:fixed;
-
-    right:25px;
-
-    bottom:95px;
-
-    width:60px;
-
-    height:60px;
-
-    border-radius:50%;
-
-    background:var(--primary);
-
-    color:#fff;
-
-    font-size:24px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    box-shadow:var(--shadow);
-
-    z-index:999;
-
-    transition:.35s;
-
-}
-
-.btn-musica:hover{
-
-    background:var(--primary-dark);
-
-    transform:scale(1.08);
-
-}
-
-/* ==========================================================
-   BOTÃO TOPO
-========================================================== */
-
-.btn-topo{
-
-    position:fixed;
-
-    right:25px;
-
-    bottom:25px;
-
-    width:55px;
-
-    height:55px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:var(--primary);
-
-    color:#fff;
-
-    font-size:24px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    cursor:pointer;
-
-    box-shadow:var(--shadow);
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.35s;
-
-    z-index:999;
-
-}
-
-.btn-topo.show{
-
-    opacity:1;
-
-    visibility:visible;
-
-}
-
-.btn-topo:hover{
-
-    background:var(--primary-dark);
-
-    transform:translateY(-3px);
-
-}
-
-/* ==========================================================
-   SCROLL
-========================================================== */
-
-::-webkit-scrollbar{
-
-    width:10px;
-
-}
-
-::-webkit-scrollbar-track{
-
-    background:#edf5fb;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:var(--primary);
-
-    border-radius:20px;
-
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-    background:var(--primary-dark);
-
-}
-
-/* ==========================================================
-   ANIMAÇÕES
+ANIMAÇÕES
 ========================================================== */
 
 @keyframes fadeUp{
@@ -1378,223 +610,58 @@ button:hover{
 
 }
 
-@keyframes girar{
+.fade{
 
-    from{
-
-        transform:rotate(0deg);
-
-    }
-
-    to{
-
-        transform:rotate(360deg);
-
-    }
-
-}
-
-@keyframes pulse{
-
-    0%{
-
-        transform:scale(1);
-
-    }
-
-    50%{
-
-        transform:scale(1.05);
-
-    }
-
-    100%{
-
-        transform:scale(1);
-
-    }
+    animation:fadeUp .8s ease;
 
 }
 
 /* ==========================================================
-   ANIMAÇÕES DOS CARDS
+RESPONSIVO
 ========================================================== */
 
-.card,
-.card-presente,
-.card-convite,
-.convidado,
-.tempo{
+@media(max-width:600px){
 
-    animation:fadeUp .8s ease both;
-
-}
-
-/* ==========================================================
-   RESPONSIVIDADE
-========================================================== */
-
-@media (max-width:992px){
-
-    .hero h1{
-
-        font-size:68px;
-
-    }
-
-    .contador-grid{
-
-        grid-template-columns:repeat(2,1fr);
-
-    }
-
-}
-
-@media (max-width:768px){
-
-    .hero{
-
-        height:80vh;
-
-    }
-
-    .hero h1{
-
-        font-size:54px;
-
-    }
-
-    .hero p{
-
-        font-size:18px;
-
-    }
-
-    .cover h1{
-
-        font-size:60px;
-
-    }
-
-    .contador h2,
-    .evento h2,
-    .presentes h2,
-    .localizacao h2,
-    .rsvp h2{
-
-        font-size:30px;
-
-    }
-
-    .busca{
-
-        flex-direction:column;
-
-    }
-
-    .busca input,
-    #btnBuscar{
-
-        width:100%;
-
-    }
-
-    .rodape-rsvp{
-
-        flex-direction:column;
-
-        align-items:stretch;
-
-    }
-
-    #btnConfirmar{
-
-        width:100%;
-
-    }
-
-}
-
-@media (max-width:576px){
-
-    .contador-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .tempo span{
-
-        font-size:40px;
-
-    }
-
-    .hero h1{
-
-        font-size:46px;
-
-    }
-
-    .cover h1{
+    .cover-content h1{
 
         font-size:48px;
 
     }
 
-    .footer h2{
+    .hero img{
 
-        font-size:46px;
-
-    }
-
-    .btn-musica{
-
-        width:55px;
-
-        height:55px;
-
-        right:18px;
-
-        bottom:88px;
+        height:380px;
 
     }
 
-    .btn-topo{
+    .hero-text{
 
-        width:50px;
+        padding:35px 25px;
 
-        height:50px;
+    }
 
-        right:18px;
+    .hero-text h1{
 
-        bottom:18px;
+        font-size:36px;
+
+    }
+
+    .container{
+
+        padding:20px;
+
+    }
+
+    .card{
+
+        padding:22px;
+
+    }
+
+    #confirmacao{
+
+        padding:20px;
 
     }
 
 }
-
-/* ==========================================================
-   UTILITÁRIOS
-========================================================== */
-
-.text-center{
-
-    text-align:center;
-
-}
-
-.hidden{
-
-    display:none !important;
-
-}
-
-.fade{
-
-    animation:fadeUp .5s ease;
-
-}
-
-/* ==========================================================
-   FIM DO ARQUIVO
-========================================================== */
