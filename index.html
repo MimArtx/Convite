@@ -4,607 +4,446 @@
 <head>
 
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Lucas & Yasmim</title>
 
-    <meta
-        name="description"
-        content="Convite de Casamento">
+    <!-- SEO -->
+    <meta property="og:title" content="Lucas & Yasmim">
+    <meta property="og:description"
+        content="Nosso grande dia está chegando. Clique para ver o convite.">
 
-    <meta
-        name="theme-color"
-        content="#AFC7DA">
+    <meta property="og:image"
+        content="https://mimartx.github.io/convite-casamento/img/imagem-principal.jpg">
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com">
+    <meta property="og:url"
+        content="https://mimartx.github.io/convite-casamento/">
 
-    <link
-        rel="preconnect"
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
         href="https://fonts.gstatic.com"
         crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
-    <link
-        rel="stylesheet"
-        href="style.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- ==========================================
-     TELA DE ABERTURA
-=========================================== -->
-
-<div id="cover" class="cover">
-
-    <div class="cover-content">
-
-        <p class="cover-date">
-            07 • Novembro • 2026
-        </p>
-
-        <h1>
-            Lucas
-            <span>&</span>
-            Yasmim
-        </h1>
-
-        <p class="cover-text">
-
-            Com alegria convidamos você para
-            celebrar conosco um dos dias mais
-            importantes de nossas vidas.
-
-        </p>
-
-        <button id="btnAbrir">
-
-            Abrir Convite
-
-        </button>
-
-    </div>
-
-</div>
-
-<!-- ==========================================
-     SITE
-=========================================== -->
-
-<div
-    id="site"
-    style="display:none;">
-
-<!-- ==========================================
-     HERO
-=========================================== -->
-
-<header class="hero">
-
-    <div class="hero-overlay">
-
-        <h1>
-
-            Lucas
-            <span>&</span>
-            Yasmim
-
-        </h1>
-
-        <p>
-
-            "Assim já não são dois,
-            mas uma só carne."
-
-        </p>
-
-        <small>
-
-            Mateus 19:6
-
-        </small>
-
-    </div>
-
-</header>
-
-<!-- ==========================================
-     CONTADOR
-=========================================== -->
-
-<section class="contador">
-
-    <h2>
-
-        Faltam apenas
-
-    </h2>
-
-    <div class="contador-grid">
-
-        <div class="tempo">
-
-            <span id="dias">
-
-                000
-
-            </span>
-
-            <small>Dias</small>
-
-        </div>
-
-        <div class="tempo">
-
-            <span id="horas">
-
-                00
-
-            </span>
-
-            <small>Horas</small>
-
-        </div>
-
-        <div class="tempo">
-
-            <span id="minutos">
-
-                00
-
-            </span>
-
-            <small>Minutos</small>
-
-        </div>
-
-        <div class="tempo">
-
-            <span id="segundos">
-
-                00
-
-            </span>
-
-            <small>Segundos</small>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ==========================================
-     MENSAGEM
-=========================================== -->
-
-<section class="mensagem-casal">
-
-    <div class="container">
-
-        <h2>
-
-            Nossa História
-
-        </h2>
-
-        <p>
-
-            Deus escreveu cada capítulo
-            da nossa história com amor,
-            propósito e fidelidade.
-
-        </p>
-
-        <p>
-
-            Agora chegou o momento de
-            celebrarmos a realização desse
-            sonho ao lado das pessoas que
-            fazem parte da nossa caminhada.
-
-        </p>
-
-    </div>
-
-</section>
-
-<!-- ==========================================
-     CERIMÔNIA
-=========================================== -->
-
-<section class="evento">
-
-    <div class="container">
-
-        <h2>
-
-            Cerimônia
-
-        </h2>
-
-        <div class="card">
-
-            <h3>
-
-                07 de Novembro de 2026
-
-            </h3>
+    <!-- ========================= -->
+    <!-- CAPA -->
+    <!-- ========================= -->
+
+    <section id="cover">
+
+        <div class="overlay"></div>
+
+        <div class="cover-content">
+
+            <h1>
+                Lucas
+                <br>
+                &
+                <br>
+                Yasmim
+            </h1>
 
             <p>
-
-                Às 16h30
-
+                Nosso grande dia está chegando.
             </p>
 
-            <p>
-
-                Local da cerimônia
-
-            </p>
-
-            <a
-                href="#">
-
-                Ver localização
-
-            </a>
+            <button id="btnAbrir">
+                Abrir Convite
+            </button>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
-<!-- ==========================================
-     LISTA DE PRESENTES
-=========================================== -->
+    <!-- ========================= -->
+    <!-- SITE -->
+    <!-- ========================= -->
 
-<section class="presentes">
+    <main id="site">
 
-    <div class="container">
+        <!-- Hero -->
 
-        <h2>
-            Lista de Presentes
-        </h2>
+        <section class="hero">
 
-        <p class="descricao">
+            <img
+                src="img/imagem-principal.jpg"
+                alt="Lucas e Yasmim">
 
-            Sua presença é o nosso maior presente.
-            Mas, se desejar nos presentear,
-            disponibilizamos uma chave PIX.
+            <div class="hero-text">
 
-        </p>
+                <h1>
+                    Lucas
+                    <span>&</span>
+                    Yasmim
+                </h1>
 
-        <div class="card-presente">
+                <div class="linha"></div>
 
-            <h3>PIX</h3>
+                <p class="versiculo">
 
-            <div id="pix" class="pix">
+                    “Assim, eles já não são dois,
+                    mas uma só carne.
+                    Portanto, o que Deus uniu,
+                    ninguém separe.”
 
-                000.000.000-00
+                </p>
+
+                <small>Mateus 19:6</small>
+
+                <p class="intro">
+
+                    Com alegria diante de Deus,
+                    convidamos você para celebrar
+                    o nosso casamento.
+
+                    Um dia preparado com amor
+                    para ser inesquecível.
+
+                </p>
 
             </div>
 
-            <button id="copiarPix">
+        </section>
 
-                Copiar Chave PIX
+        <!-- Contador -->
 
-            </button>
+        <section class="contador">
 
-            <span id="pixMensagem"></span>
+            <h2>
 
-        </div>
+                07 • 11 • 2026
 
-    </div>
+            </h2>
 
-</section>
+            <p id="contador"></p>
 
-<!-- ==========================================
-     LOCALIZAÇÃO
-=========================================== -->
+        </section>
 
-<section class="localizacao">
+        <!-- Casamento -->
 
-    <div class="container">
+        <section class="container">
 
-        <h2>
+            <img
+                src="img/segunda.jpg"
+                class="foto">
 
-            Localização
+            <div class="card">
 
-        </h2>
+                <h2>
+                    Casamento
+                </h2>
 
-        <div class="card">
+                <p>
 
-            <p>
+                    O início da nossa nova família
+                    diante de Deus.
 
-                Clique no botão abaixo para
-                abrir a rota até o local da cerimônia.
+                </p>
 
-            </p>
+                <strong>
 
-            <a
+                    07 de novembro de 2026
 
-                class="btnMapa"
+                </strong>
 
-                href="#"
+            </div>
 
-                target="_blank">
+        </section>
+                <!-- ========================= -->
+        <!-- LOCALIZAÇÃO -->
+        <!-- ========================= -->
 
-                Abrir no Google Maps
+        <section class="container">
 
-            </a>
+            <div class="card">
 
-        </div>
+                <h2>Localização</h2>
 
-    </div>
+                <p>
 
-</section>
+                    Espaço Um Zero Dois Festas e Eventos
 
-<!-- ==========================================
-     RSVP
-=========================================== -->
+                    <br><br>
 
-<section class="rsvp">
+                    Rua Ceriaco da Costa, 102
 
-    <div class="container">
+                    <br>
 
-        <h2>
+                    Jacareí - SP
 
-            Confirmação de Presença
+                </p>
 
-        </h2>
+                <a
+                    class="botao"
+                    href="https://maps.google.com/?q=Espaço+Um+Zero+Dois+Festas+e+Eventos+Jacareí"
+                    target="_blank">
 
-        <p class="descricao">
+                    Ver no Google Maps
 
-            Digite o nome do representante do convite.
+                </a>
 
-        </p>
+            </div>
 
-        <div class="busca">
+        </section>
 
-            <input
 
-                id="representante"
+        <!-- ========================= -->
+        <!-- CRONOGRAMA -->
+        <!-- ========================= -->
 
-                type="text"
+        <section class="container">
 
-                placeholder="Ex.: Família Henrique">
+            <div class="card">
 
-            <button
+                <h2>Nosso Dia</h2>
 
-                id="btnBuscar">
+                <div class="timeline">
 
-                Buscar Convite
+                    <div>
 
-            </button>
+                        <strong>16h30</strong>
 
-        </div>
+                        <p>Cerimônia</p>
 
-        <div
+                    </div>
 
-            id="mensagem"
+                    <div>
 
-            class="mensagem"
+                        <strong>17h30</strong>
 
-            style="display:none">
+                        <p>Fotos</p>
 
-        </div>
+                    </div>
 
-        <!-- Resultado -->
+                    <div>
 
-        <div
+                        <strong>18h30</strong>
 
-            id="resultado"
+                        <p>Recepção</p>
 
-            style="display:none">
+                    </div>
 
-            <div class="card-convite">
+                    <div>
 
-                <h3 id="nomeConvite">
+                        <strong>21h00</strong>
 
-                    Família
+                        <p>Encerramento</p>
 
-                </h3>
+                    </div>
 
-                <p id="descricaoConvite">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- TRAJE -->
+        <!-- ========================= -->
+
+        <section class="container">
+
+            <div class="card">
+
+                <h2>Traje</h2>
+
+                <p>
+
+                    Esporte Fino / Social
+
+                </p>
+
+                <p>
+
+                    Tons neutros e elegantes irão harmonizar perfeitamente com o ambiente.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- PRESENTE -->
+        <!-- ========================= -->
+
+        <section class="container">
+
+            <img
+                src="img/quarta.jpg"
+                class="foto"
+                alt="Presente">
+
+            <div class="card">
+
+                <h2>Presente</h2>
+
+                <p>
+
+                    Sua presença já é o maior presente.
+
+                </p>
+
+                <p>
+
+                    Caso deseje nos abençoar ainda mais:
+
+                </p>
+
+                <h3>PIX</h3>
+
+                <p>
+
+                    12 98115-1894
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- RSVP -->
+        <!-- ========================= -->
+
+        <section id="confirmacao">
+
+            <div class="card">
+
+                <h2>
+
+                    Confirmação de Presença
+
+                </h2>
+
+                <p>
+
+                    Digite o nome do representante do convite.
+
+                </p>
+
+                <input
+
+                    type="text"
+
+                    id="representante"
+
+                    placeholder="Ex.: Família Henrique"
+
+                >
+
+                <button
+
+                    class="botao"
+
+                    id="btnBuscar">
+
+                    Buscar Convite
+
+                </button>
+
+            </div>
+
+
+            <!-- Resultado -->
+
+            <div
+
+                class="card"
+
+                id="resultado"
+
+                style="display:none;">
+
+                <h2>
+
+                    Convite localizado 💙
+
+                </h2>
+
+                <h3 id="nomeConvite"></h3>
+
+                <p>
 
                     Selecione quem irá comparecer.
 
                 </p>
 
-                <span
-                    id="tipoConvite"
-                    class="badge">
+                <div id="listaConvidados">
 
-                    Família
+                </div>
 
-                </span>
+                <p>
 
-            </div>
+                    Total de convidados:
 
-            <div
-                id="listaConvidados"
-                class="listaConvidados">
-
-            </div>
-
-            <div class="rodape-rsvp">
-
-                <div class="total">
-
-                    Confirmados:
-
-                    <strong
-                        id="totalSelecionados">
+                    <strong id="totalSelecionados">
 
                         0
 
                     </strong>
 
-                </div>
+                </p>
 
                 <button
+
+                    class="botao"
+
                     id="btnConfirmar">
 
                     Confirmar Presença
 
                 </button>
 
+                <p id="mensagem"></p>
+
             </div>
 
-        </div>
+        </section>
 
-    </div>
 
-</section>
-<!-- ==========================================
-     MODAL DE SUCESSO
-=========================================== -->
+        <!-- ========================= -->
+        <!-- RODAPÉ -->
+        <!-- ========================= -->
 
-<div
-    id="modalSucesso"
-    class="modal">
+        <footer>
 
-    <div class="modal-content">
+            Desenvolvido por
 
-        <div class="modal-icon">
+            <strong>
 
-            💙
+                Yasmim Henrique
 
-        </div>
+            </strong>
 
-        <h2>
+            🤍
 
-            Presença Confirmada!
+        </footer>
 
-        </h2>
+    </main>
 
-        <p>
-
-            Muito obrigado por confirmar sua presença.
-
-            Estamos ansiosos para celebrar esse
-            momento tão especial com você.
-
-        </p>
-
-        <button
-            id="fecharModal">
-
-            Fechar
-
-        </button>
-
-    </div>
-
-</div>
-
-<!-- ==========================================
-     LOADING
-=========================================== -->
-
-<div
-    id="loading"
-    class="loading">
-
-    <div class="loading-box">
-
-        <div class="spinner"></div>
-
-        <p>
-
-            Aguarde...
-
-        </p>
-
-    </div>
-
-</div>
-
-<!-- ==========================================
-     RODAPÉ
-=========================================== -->
-
-<footer class="footer">
-
-    <div class="container">
-
-        <h2>
-
-            Lucas
-            <span>&</span>
-            Yasmim
-
-        </h2>
-
-        <p>
-
-            Obrigado por fazer parte da nossa história.
-
-        </p>
-
-        <small>
-
-            Esperamos você em nosso grande dia!
-
-        </small>
-
-    </div>
-
-</footer>
-
-<!-- ==========================================
-     ÁUDIO (Opcional)
-=========================================== -->
-
-<audio
-    id="musica"
-    loop>
-
-    <source
-        src="audio/musica.mp3"
-        type="audio/mpeg">
-
-</audio>
-
-<button
-    id="btnMusica"
-    class="btn-musica">
-
-    🎵
-
-</button>
-<!-- ==========================================
-     BOTÃO VOLTAR AO TOPO
-=========================================== -->
-
-<button
-    id="btnTopo"
-    class="btn-topo"
-    title="Voltar ao topo">
-
-    ↑
-
-</button>
-
-</div>
-<!-- Fim do #site -->
-
-<!-- ==========================================
-     SCRIPT PRINCIPAL
-=========================================== -->
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
 </html>
+        
