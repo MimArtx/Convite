@@ -1,23 +1,11 @@
-/* ==========================================================
+/* =======================================================
    RESET
-========================================================== */
+======================================================= */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-}
-
-:root{
-
-    --verde:#6b8f97;
-    --verde-hover:#53767d;
-    --branco:#ffffff;
-    --cinza:#666;
-    --cinza-claro:#999;
-    --fundo:#f7f8fa;
-    --sombra:0 10px 30px rgba(0,0,0,.08);
-
 }
 
 html{
@@ -26,27 +14,51 @@ html{
 
 body{
 
-    background:var(--fundo);
+    background:#F7F9FC;
+
+    color:#4F4F4F;
 
     font-family:'Montserrat',sans-serif;
-
-    color:#333;
 
     overflow-x:hidden;
 
 }
 
-/* ==========================================================
+/* =======================================================
+   PALETA
+======================================================= */
+
+:root{
+
+    --branco:#FFFFFF;
+
+    --azul:#91AFC8;
+
+    --azul-hover:#6F93B3;
+
+    --azul-claro:#EEF5FB;
+
+    --cinza:#5E5E5E;
+
+    --cinza-claro:#888888;
+
+    --sombra:
+
+        0 12px 30px
+
+        rgba(0,0,0,.08);
+
+}
+
+/* =======================================================
 CAPA
-========================================================== */
+======================================================= */
 
 #cover{
 
     position:fixed;
 
     inset:0;
-
-    z-index:9999;
 
     display:flex;
 
@@ -55,17 +67,25 @@ CAPA
     align-items:center;
 
     background:url("img/imagem-principal.jpg")
-    center center/cover no-repeat;
+    center center/cover;
+
+    z-index:9999;
 
 }
 
-#cover .overlay{
+.overlay{
 
     position:absolute;
 
     inset:0;
 
-    background:rgba(0,0,0,.45);
+    background:linear-gradient(
+
+        rgba(0,0,0,.35),
+
+        rgba(0,0,0,.55)
+
+    );
 
 }
 
@@ -75,29 +95,29 @@ CAPA
 
     z-index:2;
 
-    text-align:center;
-
     color:white;
 
-    animation:fadeUp 1.3s ease;
+    text-align:center;
+
+    animation:fadeUp 1.2s;
 
 }
 
 .cover-content h1{
 
-    font-family:'Playfair Display',serif;
+    font-family:"Playfair Display",serif;
 
-    font-size:65px;
+    font-size:72px;
+
+    letter-spacing:4px;
 
     line-height:1.2;
-
-    letter-spacing:3px;
 
 }
 
 .cover-content p{
 
-    margin-top:20px;
+    margin-top:18px;
 
     font-size:18px;
 
@@ -109,21 +129,23 @@ CAPA
 
     margin-top:40px;
 
-    padding:18px 50px;
+    padding:18px 55px;
 
     border:none;
 
-    border-radius:40px;
-
-    background:white;
-
-    color:#333;
-
-    font-size:17px;
+    border-radius:50px;
 
     cursor:pointer;
 
-    transition:.3s;
+    background:white;
+
+    color:#444;
+
+    font-size:17px;
+
+    font-weight:500;
+
+    transition:.35s;
 
     box-shadow:var(--sombra);
 
@@ -131,13 +153,13 @@ CAPA
 
 #btnAbrir:hover{
 
-    transform:translateY(-3px);
+    transform:translateY(-4px);
 
 }
 
-/* ==========================================================
+/* =======================================================
 SITE
-========================================================== */
+======================================================= */
 
 #site{
 
@@ -149,19 +171,19 @@ SITE
 
     background:white;
 
-    box-shadow:0 0 30px rgba(0,0,0,.08);
+    box-shadow:0 0 40px rgba(0,0,0,.08);
 
 }
 
-/* ==========================================================
+/* =======================================================
 HERO
-========================================================== */
+======================================================= */
 
-.hero img{
+.hero-img{
 
     width:100%;
 
-    height:470px;
+    height:480px;
 
     object-fit:cover;
 
@@ -177,15 +199,15 @@ HERO
 
 .hero-text h1{
 
-    font-family:'Playfair Display',serif;
+    font-size:46px;
 
-    font-size:45px;
+    font-family:"Playfair Display",serif;
 
 }
 
 .hero-text span{
 
-    color:var(--verde);
+    color:var(--azul);
 
 }
 
@@ -195,9 +217,9 @@ HERO
 
     height:2px;
 
-    background:var(--verde);
+    margin:22px auto;
 
-    margin:20px auto;
+    background:var(--azul);
 
 }
 
@@ -205,9 +227,19 @@ HERO
 
     font-style:italic;
 
-    line-height:1.7;
-
     color:var(--cinza);
+
+    line-height:1.8;
+
+}
+
+.hero-text small{
+
+    display:block;
+
+    margin-top:10px;
+
+    color:var(--cinza-claro);
 
 }
 
@@ -215,55 +247,70 @@ HERO
 
     margin-top:25px;
 
-    line-height:1.8;
+    line-height:1.9;
 
     color:var(--cinza);
 
 }
 
-/* ==========================================================
+/* =======================================================
 CONTADOR
-========================================================== */
+======================================================= */
 
 .contador{
 
-    text-align:center;
+    display:flex;
+
+    justify-content:center;
+
+    gap:14px;
 
     padding:45px 20px;
 
-    background:#fbfbfb;
+    background:#F8FBFE;
 
 }
 
-.contador h2{
+.contador-card{
 
-    font-family:'Playfair Display',serif;
+    width:90px;
 
-    font-size:32px;
+    background:white;
 
-    color:var(--verde);
+    border-radius:20px;
 
-    letter-spacing:3px;
+    box-shadow:var(--sombra);
+
+    padding:18px;
+
+    text-align:center;
 
 }
 
-#contador{
+.contador-card span{
 
-    margin-top:15px;
+    display:block;
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    color:var(--azul);
+
+}
+
+.contador-card small{
 
     color:var(--cinza);
 
-    font-size:17px;
-
 }
-
-/* ==========================================================
-CONTAINER
-========================================================== */
+/* =======================================================
+CONTAINERS
+======================================================= */
 
 .container{
 
-    padding:35px;
+    padding:35px 25px;
 
 }
 
@@ -271,118 +318,143 @@ CONTAINER
 
     width:100%;
 
-    height:260px;
+    height:270px;
 
     object-fit:cover;
 
-    border-radius:20px;
+    border-radius:22px;
 
     margin-bottom:25px;
-
-}
-
-.card{
-
-    background:white;
-
-    border-radius:20px;
-
-    padding:28px;
 
     box-shadow:var(--sombra);
 
-    margin-bottom:25px;
+}
+
+/* =======================================================
+CARDS
+======================================================= */
+
+.card{
+
+    background:var(--branco);
+
+    border-radius:24px;
+
+    padding:30px;
+
+    margin-bottom:28px;
+
+    box-shadow:var(--sombra);
+
+    transition:.35s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
 
 }
 
 .card h2{
 
-    font-family:'Playfair Display',serif;
+    font-family:"Playfair Display",serif;
+
+    font-size:30px;
+
+    color:#3E4D5C;
 
     margin-bottom:18px;
 
-    color:#333;
+}
+
+.card h3{
+
+    color:var(--azul);
+
+    margin-bottom:15px;
 
 }
 
 .card p{
 
-    line-height:1.8;
-
     color:var(--cinza);
+
+    line-height:1.9;
 
     margin-bottom:12px;
 
 }
-/* ==========================================================
-BOTÕES
-========================================================== */
 
-.botao{
+.card strong{
 
-    display:inline-flex;
+    color:var(--azul);
 
-    align-items:center;
-
-    justify-content:center;
-
-    width:100%;
-
-    margin-top:20px;
-
-    padding:15px;
-
-    border:none;
-
-    border-radius:40px;
-
-    background:var(--verde);
-
-    color:white;
-
-    font-size:16px;
-
-    font-weight:500;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    text-decoration:none;
+    font-size:18px;
 
 }
 
-.botao:hover{
-
-    background:var(--verde-hover);
-
-    transform:translateY(-2px);
-
-}
-
-/* ==========================================================
+/* =======================================================
 TIMELINE
-========================================================== */
+======================================================= */
 
 .timeline{
 
-    display:flex;
+    position:relative;
 
-    flex-direction:column;
+    margin-top:20px;
 
-    gap:18px;
+}
+
+.timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:14px;
+
+    top:0;
+
+    bottom:0;
+
+    width:2px;
+
+    background:var(--azul);
 
 }
 
 .timeline div{
 
-    padding:18px;
+    position:relative;
 
-    border-left:4px solid var(--verde);
+    padding-left:45px;
 
-    background:#fafafa;
+    margin-bottom:28px;
 
-    border-radius:10px;
+}
+
+.timeline div::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:5px;
+
+    top:6px;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:var(--azul);
+
+    border:4px solid white;
+
+    box-shadow:0 0 0 2px var(--azul);
 
 }
 
@@ -390,21 +462,172 @@ TIMELINE
 
     display:block;
 
-    color:var(--verde);
+    color:var(--azul);
+
+    font-size:18px;
 
     margin-bottom:6px;
 
-    font-size:17px;
+}
+
+.timeline p{
+
+    margin:0;
 
 }
 
-/* ==========================================================
-CONFIRMAÇÃO
-========================================================== */
+/* =======================================================
+BOTÕES
+======================================================= */
+
+.botao{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+
+    margin-top:18px;
+
+    padding:15px;
+
+    background:var(--azul);
+
+    color:white;
+
+    text-decoration:none;
+
+    border:none;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:16px;
+
+    font-weight:500;
+
+}
+
+.botao:hover{
+
+    background:var(--azul-hover);
+
+    transform:translateY(-2px);
+
+}
+
+/* =======================================================
+LOCALIZAÇÃO
+======================================================= */
+
+.botoes-local{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+/* =======================================================
+PIX
+======================================================= */
+
+.pix-box{
+
+    margin-top:25px;
+
+    background:var(--azul-claro);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+}
+
+#pix{
+
+    display:block;
+
+    margin-bottom:20px;
+
+    font-size:24px;
+
+    letter-spacing:2px;
+
+    color:var(--azul);
+
+}
+
+#pixMensagem{
+
+    margin-top:18px;
+
+    color:var(--azul);
+
+    font-weight:600;
+
+    min-height:22px;
+
+}
+
+/* =======================================================
+TÍTULOS CENTRALIZADOS
+======================================================= */
+
+.titulo-central{
+
+    text-align:center;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:36px;
+
+    color:#3E4D5C;
+
+    margin-bottom:30px;
+
+    position:relative;
+
+}
+
+.titulo-central::after{
+
+    content:"";
+
+    display:block;
+
+    width:80px;
+
+    height:3px;
+
+    background:var(--azul);
+
+    margin:18px auto 0;
+
+    border-radius:10px;
+
+}
+/* =======================================================
+CONFIRMAÇÃO DE PRESENÇA (RSVP)
+======================================================= */
 
 #confirmacao{
 
-    padding:35px;
+    padding:35px 25px 50px;
+
+    background:#F7F9FC;
 
 }
 
@@ -412,43 +635,103 @@ CONFIRMAÇÃO
 
     width:100%;
 
-    padding:14px;
+    padding:16px;
 
-    margin-top:15px;
+    margin-top:18px;
 
-    border:1px solid #ddd;
+    border:2px solid #E3ECF5;
 
-    border-radius:12px;
+    border-radius:16px;
 
-    font-size:15px;
+    font-size:16px;
 
     transition:.3s;
+
+    background:#FFFFFF;
 
 }
 
 #confirmacao input:focus{
 
-    border-color:var(--verde);
-
     outline:none;
 
-    box-shadow:0 0 0 3px rgba(107,143,151,.15);
+    border-color:var(--azul);
+
+    box-shadow:0 0 0 4px rgba(145,175,200,.20);
 
 }
+
+/* =======================================================
+RESULTADO
+======================================================= */
 
 #resultado{
 
-    display:none;
+    margin-top:30px;
 
 }
 
-/* ==========================================================
-LISTA DE CONVIDADOS
-========================================================== */
+.resultado-topo{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+.resultado-topo h2{
+
+    color:var(--azul);
+
+}
+
+.resultado-topo p{
+
+    margin-top:10px;
+
+}
+
+/* =======================================================
+INFORMAÇÕES DO CONVITE
+======================================================= */
+
+.convite-info{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+#nomeConvite{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:30px;
+
+    color:#4A6072;
+
+}
+
+#descricaoConvite{
+
+    margin-top:10px;
+
+}
+
+/* =======================================================
+LISTA DOS CONVIDADOS
+======================================================= */
 
 #listaConvidados{
 
-    margin-top:20px;
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    margin-top:25px;
 
 }
 
@@ -460,13 +743,13 @@ LISTA DE CONVIDADOS
 
     justify-content:space-between;
 
-    background:#fafafa;
+    background:#FFFFFF;
 
-    padding:14px 18px;
+    padding:18px 20px;
 
-    margin-bottom:12px;
+    border-radius:18px;
 
-    border-radius:12px;
+    box-shadow:var(--sombra);
 
     transition:.3s;
 
@@ -474,7 +757,9 @@ LISTA DE CONVIDADOS
 
 .convidado:hover{
 
-    background:#f0f5f6;
+    transform:translateY(-2px);
+
+    background:#F8FBFE;
 
 }
 
@@ -484,111 +769,432 @@ LISTA DE CONVIDADOS
 
     align-items:center;
 
-    gap:12px;
-
-    cursor:pointer;
+    gap:15px;
 
     width:100%;
 
+    cursor:pointer;
+
+    font-size:16px;
+
+    color:#4F4F4F;
+
 }
 
-/* ==========================================================
+/* =======================================================
 CHECKBOX
-========================================================== */
+======================================================= */
 
 .convidado input[type="checkbox"]{
 
-    width:18px;
+    width:22px;
 
-    height:18px;
+    height:22px;
 
-    accent-color:var(--verde);
+    accent-color:var(--azul);
 
-}
-
-/* ==========================================================
-TOTAL
-========================================================== */
-
-#totalSelecionados{
-
-    color:var(--verde);
-
-    font-size:20px;
-
-    font-weight:bold;
+    cursor:pointer;
 
 }
 
-/* ==========================================================
+/* =======================================================
+RESUMO
+======================================================= */
+
+.resumo-confirmacao{
+
+    margin-top:30px;
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+.resumo-item{
+
+    flex:1;
+
+    background:#EEF5FB;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+.resumo-item span{
+
+    display:block;
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+.resumo-item strong{
+
+    display:block;
+
+    margin-top:10px;
+
+    color:var(--azul);
+
+    font-size:30px;
+
+}
+
+/* =======================================================
+OBSERVAÇÕES
+======================================================= */
+
+.observacoes{
+
+    margin-top:30px;
+
+    background:#FFFFFF;
+
+    border-left:5px solid var(--azul);
+
+    padding:22px;
+
+    border-radius:16px;
+
+}
+
+.observacoes h3{
+
+    margin-bottom:15px;
+
+    color:#4A6072;
+
+}
+
+.observacoes ul{
+
+    padding-left:20px;
+
+}
+
+.observacoes li{
+
+    margin-bottom:12px;
+
+    color:#666;
+
+    line-height:1.7;
+
+}
+
+/* =======================================================
 MENSAGENS
-========================================================== */
+======================================================= */
 
-#mensagem{
-
-    margin-top:20px;
-
-    padding:15px;
-
-    border-radius:12px;
+.mensagem{
 
     display:none;
 
-    font-weight:500;
+    margin-top:25px;
+
+    padding:18px;
+
+    border-radius:16px;
 
     text-align:center;
 
-}
-
-.sucesso{
-
-    background:#e9f8ef;
-
-    color:#24774a;
+    font-weight:600;
 
 }
 
-.erro{
+.mensagem.sucesso{
 
-    background:#fdecec;
+    background:#EAF7EE;
 
-    color:#b53030;
-
-}
-
-.aviso{
-
-    background:#fff8e5;
-
-    color:#996c00;
+    color:#2E7D32;
 
 }
 
-/* ==========================================================
+.mensagem.erro{
+
+    background:#FDECEC;
+
+    color:#C62828;
+
+}
+
+.mensagem.aviso{
+
+    background:#FFF8E1;
+
+    color:#996C00;
+
+}
+
+/* =======================================================
+GALERIA
+======================================================= */
+
+.galeria{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:20px;
+
+    margin-top:30px;
+
+}
+
+.galeria img{
+
+    width:100%;
+
+    height:280px;
+
+    object-fit:cover;
+
+    border-radius:22px;
+
+    box-shadow:var(--sombra);
+
+    transition:.4s;
+
+}
+
+.galeria img:hover{
+
+    transform:scale(1.02);
+
+}
+/* =======================================================
+MODAL DE SUCESSO
+======================================================= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    z-index:99999;
+
+    backdrop-filter:blur(4px);
+
+}
+
+.modal-content{
+
+    width:100%;
+
+    max-width:420px;
+
+    background:#FFFFFF;
+
+    border-radius:28px;
+
+    padding:40px 30px;
+
+    text-align:center;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
+
+    animation:fadeUp .4s ease;
+
+}
+
+.modal-icon{
+
+    font-size:60px;
+
+    margin-bottom:20px;
+
+}
+
+.modal-content h2{
+
+    font-family:"Playfair Display",serif;
+
+    color:var(--azul);
+
+    margin-bottom:18px;
+
+}
+
+.modal-content p{
+
+    line-height:1.8;
+
+    color:var(--cinza);
+
+    margin-bottom:12px;
+
+}
+
+/* =======================================================
+LOADING
+======================================================= */
+
+.loading{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(255,255,255,.90);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999999;
+
+}
+
+.loading-box{
+
+    background:#FFFFFF;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:var(--sombra);
+
+}
+
+.loading-box h3{
+
+    margin-top:20px;
+
+    color:var(--azul);
+
+}
+
+.loading-box p{
+
+    margin-top:8px;
+
+    color:var(--cinza);
+
+}
+
+.spinner{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    border:6px solid #DDEAF5;
+
+    border-top-color:var(--azul);
+
+    animation:girar 1s linear infinite;
+
+    margin:auto;
+
+}
+
+/* =======================================================
 FOOTER
-========================================================== */
+======================================================= */
 
 footer{
 
-    padding:40px;
+    background:#FFFFFF;
+
+    padding:60px 25px;
 
     text-align:center;
 
+    margin-top:40px;
+
+    border-top:1px solid #EEF2F7;
+
+}
+
+.footer-content h3{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:34px;
+
+    color:#4A6072;
+
+}
+
+.footer-content p{
+
+    color:var(--cinza);
+
+    margin-top:12px;
+
+    line-height:1.8;
+
+}
+
+.footer-content small{
+
+    display:block;
+
+    margin-top:12px;
+
+    color:#888;
+
+}
+
+.linha-footer{
+
+    width:90px;
+
+    height:2px;
+
+    background:var(--azul);
+
+    margin:25px auto;
+
+    border-radius:10px;
+
+}
+
+.footer-copy{
+
+    margin-top:35px;
+
     color:#999;
 
-    font-size:13px;
+    font-size:14px;
 
 }
 
-footer strong{
+.footer-copy strong{
 
-    color:var(--verde);
+    color:var(--azul);
 
 }
 
-/* ==========================================================
+/* =======================================================
 ANIMAÇÕES
-========================================================== */
+======================================================= */
 
 @keyframes fadeUp{
 
@@ -596,7 +1202,7 @@ ANIMAÇÕES
 
         opacity:0;
 
-        transform:translateY(40px);
+        transform:translateY(35px);
 
     }
 
@@ -610,57 +1216,211 @@ ANIMAÇÕES
 
 }
 
-.fade{
+@keyframes fadeIn{
 
-    animation:fadeUp .8s ease;
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
 
 }
 
-/* ==========================================================
-RESPONSIVO
-========================================================== */
+@keyframes girar{
 
-@media(max-width:600px){
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* =======================================================
+SCROLLBAR
+======================================================= */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#EEF5FB;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--azul);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--azul-hover);
+
+}
+
+/* =======================================================
+RESPONSIVO
+======================================================= */
+
+@media(max-width:768px){
 
     .cover-content h1{
 
-        font-size:48px;
+        font-size:52px;
 
     }
 
-    .hero img{
+    .hero-img{
 
-        height:380px;
-
-    }
-
-    .hero-text{
-
-        padding:35px 25px;
+        height:360px;
 
     }
 
     .hero-text h1{
 
-        font-size:36px;
+        font-size:38px;
 
     }
 
-    .container{
+    .contador{
 
-        padding:20px;
+        flex-wrap:wrap;
+
+        gap:15px;
+
+    }
+
+    .contador-card{
+
+        width:120px;
 
     }
 
     .card{
 
+        padding:24px;
+
+    }
+
+    .resumo-confirmacao{
+
+        flex-direction:column;
+
+    }
+
+    .modal-content{
+
+        padding:30px 22px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .container{
+
+        padding:22px 18px;
+
+    }
+
+    .cover-content h1{
+
+        font-size:44px;
+
+    }
+
+    .cover-content p{
+
+        font-size:16px;
+
+    }
+
+    #btnAbrir{
+
+        width:100%;
+
+    }
+
+    .hero-img{
+
+        height:300px;
+
+    }
+
+    .hero-text{
+
+        padding:35px 22px;
+
+    }
+
+    .hero-text h1{
+
+        font-size:34px;
+
+    }
+
+    .contador{
+
+        padding:35px 15px;
+
+    }
+
+    .contador-card{
+
+        width:45%;
+
+    }
+
+    .card{
+
+        border-radius:20px;
+
         padding:22px;
 
     }
 
-    #confirmacao{
+    .card h2{
 
-        padding:20px;
+        font-size:26px;
+
+    }
+
+    .titulo-central{
+
+        font-size:30px;
+
+    }
+
+    .galeria img{
+
+        height:220px;
+
+    }
+
+    .footer-content h3{
+
+        font-size:28px;
 
     }
 
