@@ -488,7 +488,6 @@ representante.addEventListener(
 function criarListaConvidados(){
 
     listaConvidados.innerHTML = "";
-
     totalSelecionados.innerHTML = "0";
 
     pessoas.forEach((nome,index)=>{
@@ -496,32 +495,21 @@ function criarListaConvidados(){
         const item = document.createElement("div");
         item.className = "convidado";
 
-        const label = document.createElement("label");
-
-        const checkbox = document.createElement("input");
-
-        checkbox.type = "checkbox";
-        checkbox.value = nome;
-        checkbox.dataset.index = index;
-
-        const span = document.createElement("span");
-        span.innerHTML = nome;
-
-        label.appendChild(checkbox);
-        label.appendChild(span);
-
-        item.appendChild(label);
+        item.innerHTML = `
+            <label class="linha-convidado">
+                <input type="checkbox"
+                       value="${nome}"
+                       data-index="${index}">
+                <span>${nome}</span>
+            </label>
+        `;
 
         listaConvidados.appendChild(item);
 
-        checkbox.addEventListener(
-
+        item.querySelector("input").addEventListener(
             "change",
-
             atualizarQuantidade
-
         );
-
     });
 
 }
