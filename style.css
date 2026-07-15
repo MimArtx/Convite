@@ -724,38 +724,40 @@ LISTA DOS CONVIDADOS
 ======================================================= */
 
 #listaConvidados{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
 }
 
 .convidado{
-    background: #FFFFFF;
-    border-radius: 18px;
-    box-shadow: var(--sombra);
-    padding: 20px;
+    display:flex;
+    align-items:center;
+    padding:18px 22px;
+    background:#fff;
+    border-radius:18px;
+    box-shadow:var(--sombra);
 }
 
 .convidado label{
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    width: 100%;
-    cursor: pointer;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:15px;
+    width:100%;
 }
 
 .convidado input[type="checkbox"]{
-    width: 22px;
-    height: 22px;
-    margin: 0;
-    flex-shrink: 0;
-    accent-color: var(--azul);
+    width:22px;
+    height:22px;
+    margin:0;
+    flex-shrink:0;
+    accent-color:var(--azul);
 }
 
 .convidado span{
-    font-size: 18px;
-    color: #4F4F4F;
-    line-height: 1;
+    font-size:18px;
+    color:#4F4F4F;
+    white-space:nowrap;
 }
 
 
