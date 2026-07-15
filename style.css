@@ -631,7 +631,7 @@ CONFIRMAÇÃO DE PRESENÇA (RSVP)
 
 }
 
-#confirmacao input{
+#confirmacao input[type="text"]{
 
     width:100%;
 
@@ -651,7 +651,7 @@ CONFIRMAÇÃO DE PRESENÇA (RSVP)
 
 }
 
-#confirmacao input:focus{
+#confirmacao input[type="text"]:focus{
 
     outline:none;
 
@@ -730,64 +730,30 @@ LISTA DOS CONVIDADOS
 }
 
 .convidado{
-    display:flex;
-    align-items:center;
-    padding:18px 22px;
     background:#fff;
     border-radius:18px;
     box-shadow:var(--sombra);
+    padding:18px 22px;
 }
 
 .convidado label{
     display:flex;
     align-items:center;
-    justify-content:flex-start;
-    gap:15px;
-    width:100%;
+    gap:16px;
+    cursor:pointer;
 }
 
 .convidado input[type="checkbox"]{
     width:22px;
     height:22px;
     margin:0;
-    flex-shrink:0;
+    cursor:pointer;
     accent-color:var(--azul);
 }
 
 .convidado span{
     font-size:18px;
     color:#4F4F4F;
-    white-space:nowrap;
-}
-
-.linha-convidado{
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
-    gap:18px;
-    width:100%;
-}
-
-.linha-convidado span{
-    font-size:18px;
-    color:#4F4F4F;
-}
-
-
-/* =======================================================
-CHECKBOX
-======================================================= */
-
-.convidado input[type="checkbox"]{
-
-    width:22px;
-
-    height:22px;
-
-    accent-color:var(--azul);
-
-    cursor:pointer;
-
 }
 
 /* =======================================================
