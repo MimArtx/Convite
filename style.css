@@ -760,6 +760,18 @@ LISTA DOS CONVIDADOS
     white-space:nowrap;
 }
 
+.linha-convidado{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:18px;
+    width:100%;
+}
+
+.linha-convidado span{
+    font-size:18px;
+    color:#4F4F4F;
+}
 
 
 /* =======================================================
