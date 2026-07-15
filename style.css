@@ -755,31 +755,37 @@ LISTA DOS CONVIDADOS
 
 }
 
-.convidado:hover{
-
-    transform:translateY(-2px);
-
-    background:#F8FBFE;
-
+.convidado{
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    padding: 18px 20px;
+    border-radius: 18px;
+    box-shadow: var(--sombra);
 }
 
 .convidado label{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    width:100%;
-
-    cursor:pointer;
-
-    font-size:16px;
-
-    color:#4F4F4F;
-
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    cursor: pointer;
 }
+
+.convidado input[type="checkbox"]{
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    accent-color: var(--azul);
+}
+
+.convidado span{
+    flex: 1;
+    text-align: left;
+    font-size: 16px;
+    color: #4F4F4F;
+}
+    
 
 /* =======================================================
 CHECKBOX
