@@ -320,7 +320,11 @@ async function buscarConvite(){
 
     abrirLoading();
 
-    try{
+bloquearBotoes();
+
+try{
+
+    
 const resposta = await fetch(
     `${SCRIPT_URL}?representante=${encodeURIComponent(nome)}`
 );
@@ -585,61 +589,59 @@ async function confirmarPresenca(){
 
     try{
 
-        const resposta = await fetch(
+     const resposta = await fetch(SCRIPT_URL, {
 
-            SCRIPT_URL,
+    method: "POST",
 
-            {
+    headers: {
+        "Content-Type": "application/json"
+    },
 
-                method:"POST",
+    body: JSON.stringify({
 
-                headers:{
+        convite: conviteAtual,
 
-                    "Content-Type":"application/json"
+        representante: representante.value.trim(),
 
-                },
+        presentes: confirmados
 
-                body:JSON.stringify({
+    })
 
-                    convite:conviteAtual,
+});
 
-                    representantes:representante.value.trim(),
+        if (!resposta.ok) {
 
-                    presentes:confirmados
+    throw new Error("Erro na comunicação com o servidor.");
 
-                })
+}
 
-            }
-
-        );
-
-        const retorno = await resposta.json();
-
+const retorno = await resposta.json();
+       
         fecharLoading();
 
-        if(retorno.status==="ok"){
+        if(retorno.status === "ok"){
 
-            abrirModal();
+    limparStorage();
 
-            btnConfirmar.disabled = true;
+    abrirModal();
 
-            btnConfirmar.innerHTML =
+    btnConfirmar.disabled = true;
 
-            "✔ Confirmado";
+    btnConfirmar.innerHTML = "✔ Confirmado";
 
-            listaConvidados
+    listaConvidados
+        .querySelectorAll("input")
+        .forEach(input => {
 
-            .querySelectorAll("input")
+            input.disabled = true;
 
-            .forEach(input=>{
+        });
 
-                input.disabled=true;
+    liberarBotoes();
 
-            });
+    return;
 
-            return;
-
-        }
+}
 
         mostrarMensagem(
 
@@ -655,19 +657,21 @@ async function confirmarPresenca(){
 
     catch(error){
 
-        fecharLoading();
+    fecharLoading();
 
-        console.error(error);
+    liberarBotoes();
 
-        mostrarMensagem(
+    console.error(error);
 
-            "Erro ao confirmar presença.",
+    mostrarMensagem(
 
-            "erro"
+        error.message ||
 
-        );
+        "Erro ao confirmar presença.",
 
-    }
+        "erro"
+
+    );
 
 }
 
