@@ -321,19 +321,22 @@ async function buscarConvite(){
     abrirLoading();
 
     try{
+const resposta = await fetch(
+    `${SCRIPT_URL}?representante=${encodeURIComponent(nome)}`
+);
 
-        const resposta = await fetch(
+if (!resposta.ok) {
+    throw new Error("Erro ao buscar convite.");
+}
 
-            `${SCRIPT_URL}?representante=${encodeURIComponent(nome)}`
+const dados = await resposta.json();
 
-        );
+fecharLoading();
 
-        const dados = await resposta.json();
+processarResposta(dados);
 
-        fecharLoading();
-
-        processarResposta(dados);
-
+salvarConviteLocal();
+       
     }
 
     catch(error){
@@ -960,19 +963,6 @@ representante.addEventListener(
 
 );
 
-/* ==========================================================
-   SALVAR APÓS BUSCA
-========================================================== */
-
-const buscarOriginal = buscarConvite;
-
-buscarConvite = async function(){
-
-    await buscarOriginal();
-
-    salvarConviteLocal();
-
-}
 
 /* ==========================================================
    LIMPAR STORAGE AO CONFIRMAR
